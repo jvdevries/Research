@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 public class Example
 {
-    volatile bool stop;
+    bool stop;
 
-	public void LoopTillStop(bool stopBool)
+	public void LoopTillStop()
 	{
-		while (!stopBool) ;
+		while (!((dynamic) stop)) ;
 	}
 
     public static void Main(string[] args)
@@ -34,6 +34,6 @@ public class Example
             Environment.Exit(0);
         }).Start();
         
-        e.LoopTillStop(e.stop);
+        e.LoopTillStop();
     }
 }

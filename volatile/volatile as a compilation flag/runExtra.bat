@@ -8,7 +8,7 @@ prompt $G
 @echo.
 
 @echo|set /p="This should hang for ~%waitFor% seconds."
-"Extra 2a - Passing volatile via argument hang.exe" %waitFor%
+"Extra 2 - While loop via dynamic no-hang.exe" %waitFor%
 @echo.
 
 @echo|set /p="This should not hang for ~%waitFor% seconds (but end fast)."
