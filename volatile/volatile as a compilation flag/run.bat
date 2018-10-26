@@ -1,5 +1,5 @@
 @echo off
-SET waitFor=5
+SET waitFor=3
 prompt $G
 @echo on
 
@@ -8,7 +8,7 @@ prompt $G
 @echo.
 
 @echo|set /p="This should not hang for ~%waitFor% seconds (but end fast)."
-"While loop with volatile no-hang.exe" %waitFor%
+"Extra 2b - Passing non-volatile via dynamic argument no-hang.exe" %waitFor%
 @echo.
 
 @echo off
