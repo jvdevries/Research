@@ -20,6 +20,14 @@ java NoCachingPossibleStoreLoadSwapPossible %testRuns% %printPer%
 java NoCachingPossibleNoStoreLoadSwapPossible %testRuns% %printPer%
 @echo.
 
+@echo|set /p="This should hang for 3 seconds."
+java compilerHang 3
+@echo.
+
+@echo|set /p="This should not hang for 3 seconds, but end quickly."
+java compilerHangVolatile 3
+@echo.
+
 @echo off
 prompt
 set /p input="Press enter to exit..."
