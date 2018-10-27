@@ -5,6 +5,14 @@ prompt $G
 @echo on
 
 @echo|set /p="This should report a find eventually."
+"Baseline Cache Test.exe" %runs% %printPer%
+@echo.
+
+@echo|set /p="This should report a find eventually."
+"Baseline ReOrder (and Cache) Test.exe" %runs% %printPer%
+@echo.
+
+@echo|set /p="This should report a find eventually."
 "NoFix Cache on Volatile class.exe" %runs% %printPer%
 @echo.
 
@@ -13,6 +21,7 @@ prompt $G
 @echo.
 
 @echo|set /p="This should report a find eventually."
+@echo.
 @echo|set /p="It is however hard to trigger...."
 "NoFix Swap on Thread.Volatile.exe" %runs% %printPer%
 @echo.
