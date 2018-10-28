@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM Dynamic View Swapping", "MVVM Dynamic View Swapping.csproj", "{3108E7CB-AE79-4142-8242-E1D09AA32D2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM V-V-VM Syncronization", "MVVM V-V-VM Syncronization.csproj", "{039876DE-29FC-4A27-9BE9-393C37242F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3108E7CB-AE79-4142-8242-E1D09AA32D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3108E7CB-AE79-4142-8242-E1D09AA32D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3108E7CB-AE79-4142-8242-E1D09AA32D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3108E7CB-AE79-4142-8242-E1D09AA32D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{039876DE-29FC-4A27-9BE9-393C37242F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{039876DE-29FC-4A27-9BE9-393C37242F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{039876DE-29FC-4A27-9BE9-393C37242F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{039876DE-29FC-4A27-9BE9-393C37242F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9E8BF5BC-90EE-4939-B0BB-8F6D23356332}
+		SolutionGuid = {7734D01A-7BF8-4D2D-9BB6-FFD956FB5AAB}
 	EndGlobalSection
 EndGlobal
