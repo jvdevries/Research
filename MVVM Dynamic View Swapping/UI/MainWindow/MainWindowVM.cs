@@ -16,7 +16,7 @@ namespace EasyFramework
         {
             _ForceViewRefresh = false;
             _InvalidatesImplicitDataTemplateResources = false;
-            _CurrentUserControlVM = new ViewModelA();
+            _CurrentUserControlVM = new ViewModelA("");
         }
 
         public BindableBase CurrentUserControlVM
@@ -78,26 +78,26 @@ namespace EasyFramework
             void SwitchToCaseOne()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewA), typeof(ViewModelA));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB();
-                CurrentUserControlVM = new ViewModelA();
+                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB("");
+                CurrentUserControlVM = new ViewModelA(" - 1");
             }
             void SwitchToCaseTwo()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewB), typeof(ViewModelA));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB();
-                CurrentUserControlVM = new ViewModelA();
+                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB("");
+                CurrentUserControlVM = new ViewModelA(" - 2");
             }
             void SwitchToCaseTree()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewA), typeof(ViewModelB));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA();
-                CurrentUserControlVM = new ViewModelB();
+                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA("");
+                CurrentUserControlVM = new ViewModelB(" - 1");
             }
             void SwitchToCaseFour()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewB), typeof(ViewModelB));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA();
-                CurrentUserControlVM = new ViewModelB();
+                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA("");
+                CurrentUserControlVM = new ViewModelB(" - 2");
             }
         }
     }

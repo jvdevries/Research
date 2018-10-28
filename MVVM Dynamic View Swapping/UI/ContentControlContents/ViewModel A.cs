@@ -10,6 +10,12 @@ namespace EasyFramework
 {
     public class ViewModelA : BindableBase
     {
-        public string text => "ViewModel A";
+        public ViewModelA(string suffix)
+        {
+            _text = _text + suffix;
+        }
+
+        public string text => _text;
+        private string _text = "ViewModel A";
     }
 }
