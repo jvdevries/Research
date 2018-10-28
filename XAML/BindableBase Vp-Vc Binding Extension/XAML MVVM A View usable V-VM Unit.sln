@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM V-V-VM Syncronization", "MVVM V-V-VM Syncronization.csproj", "{039876DE-29FC-4A27-9BE9-393C37242F21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAML MVVM A View usable V-VM Unit", "XAML MVVM A View usable V-VM Unit.csproj", "{039876DE-29FC-4A27-9BE9-393C37242F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@ namespace DPBindableBase
     {
         private ColorPickerVM ViewModel => (ColorPickerVM)Resources[nameof(ViewModel)];
 
-        public readonly DependencyProperty DPSelectedColor, DPStoreFavoriteCommand, DPRestoreFavoriteCommand;
+        public readonly DependencyProperty DPSelectedColor, DPStoreFavoriteCommand, DPRestoreFavoriteCommand, DPRemoveFavoriteCommand;
 
         public ColorPicker()
         {
@@ -21,11 +21,13 @@ namespace DPBindableBase
             DPSelectedColor = _DPVMBindings.CreateDPBinding(nameof(ViewModel.SelectedColor), nameof(DPSelectedColor));
             DPStoreFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.StoreFavoriteCommand), nameof(DPStoreFavoriteCommand));
             DPRestoreFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.RestoreFavoriteCommand), nameof(DPRestoreFavoriteCommand));
+            DPRemoveFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.RemoveFavoriteCommand), nameof(DPRemoveFavoriteCommand));
         }
 
-        // Parameters for the View
+        // Parameter for the View
         public Style ItemStyle { get; set; }
 
+        // Parameter for the View
         public SolidColorBrush[] Colors { get; set; }
     }
 }

@@ -29,6 +29,12 @@ namespace DPBindableBase
         public ICommand StoreFavoriteCommand => new RelayCommand(x =>
         {
             FavoriteColor = SelectedColor;
+        },
+        x => SelectedColor != null);
+
+        public ICommand RemoveFavoriteCommand => new RelayCommand(x =>
+        {
+            FavoriteColor = null;
         });
     }
 }
