@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MVVM_Util
+namespace MVVM_Lib
 {
     // From Prism MVVM
 

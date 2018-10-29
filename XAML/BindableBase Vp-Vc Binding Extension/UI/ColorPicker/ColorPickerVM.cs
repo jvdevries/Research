@@ -1,10 +1,10 @@
 ﻿using System.Windows.Input;
 using System.Windows.Media;
-using MVVM_Util;
+using MVVM_Lib;
 
 namespace DPBindableBase
 {
-    public class ColorPickerVM : MVVM_Util.DPBindableBase
+    public class ColorPickerVM : MVVM_Lib.DPBindableBase, IColorPickerVM 
     {
         public SolidColorBrush SelectedColor
         {

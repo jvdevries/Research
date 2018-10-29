@@ -1,0 +1,17 @@
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\bin\Release\VVMCommunication.exe.config
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\bin\Release\VVMCommunication.exe
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\bin\Release\VVMCommunication.pdb
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\UI\ColorPicker\ColorPicker.g.cs
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\UI\MainWindow\MainWindow.g.cs
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\App\App.g.cs
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication_MarkupCompile.cache
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication_MarkupCompile.lref
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\UI\ColorPicker\ColorPicker.baml
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\UI\MainWindow\MainWindow.baml
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication.g.resources
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication.Properties.Resources.resources
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\BindableBase Vp-Vc Binding Extension.csproj.GenerateResource.cache
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\BindableBase Vp-Vc Binding Extension.csproj.CoreCompileInputs.cache
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication.exe
+C:\Users\Z\Documents\GitHub\Research\XAML\BindableBase Vp-Vc Binding Extension\obj\Release\VVMCommunication.pdb

@@ -11,7 +11,9 @@
 
     <Grid>
         <StackPanel>
-            <ComboBox Name="ColorSelector" ItemsSource="{Binding Path=Colors, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}" SelectedItem="{Binding Path=DPSelectedColor, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}">
+            <ComboBox Name="ColorSelector" 
+                      ItemsSource="{Binding Path=Colors, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}" 
+                      SelectedItem="{Binding Path=DPSelectedColor, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="SolidColorBrush">
                         <Rectangle Style="{Binding ItemStyle, RelativeSource={RelativeSource AncestorType={x:Type main:ColorPicker}}}" Fill="{Binding}"/>

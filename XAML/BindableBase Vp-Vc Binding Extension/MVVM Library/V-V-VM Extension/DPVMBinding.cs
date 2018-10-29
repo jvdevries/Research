@@ -5,7 +5,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace MVVM_Util
+namespace MVVM_Lib
 {
     public class DPVMBinding
     {
@@ -34,8 +34,9 @@ namespace MVVM_Util
 
         public DependencyProperty CreateDPBinding(string ViewModelPropertyName, string DependencyPropertyName)
         {
+            // if VAR -> CS1976 on OnDPChanged in next line.
             PropertyInfo VMPropertyInfo = ViewModel.GetType().GetProperty(ViewModelPropertyName);
-            DependencyProperty DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
+            var DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
 
             var BinderEntry = new Binding
             {
@@ -88,7 +89,7 @@ namespace MVVM_Util
         #region Notify View
         public void SetDP<T>(string name, T value)
         {
-            Binding ChangedEntry =
+            var ChangedEntry =
                 (from ViewModelBinderEntry in BinderEntries.AsEnumerable()
                  where ViewModelBinderEntry.VMPropertyName == name
                  select ViewModelBinderEntry)

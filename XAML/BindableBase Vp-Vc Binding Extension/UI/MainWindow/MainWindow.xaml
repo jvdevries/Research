@@ -1,10 +1,10 @@
 ﻿<Window x:Class="DPBindableBase.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:src="clr-namespace:DPBindableBase"
+		xmlns:main="clr-namespace:DPBindableBase"
         Title="MainWindow" Height="350" Width="350">
     <Window.Resources>
-        <src:MainModel x:Key="ViewModel"/>
+        <main:MainModel x:Key="ViewModel"/>
         <x:Array x:Key="ColorSelectorColors" Type="{x:Type SolidColorBrush}">
             <SolidColorBrush>White</SolidColorBrush>
             <SolidColorBrush>Red</SolidColorBrush>
@@ -42,8 +42,8 @@
         <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
         <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="1">
-            <src:ColorPicker 
-            x:Name="ColorPicker"
+            <main:ColorPicker 
+            x:Name="ColorPicker1"
             Colors="{StaticResource ColorSelectorColors}"
             ItemStyle="{StaticResource ColorSelectorItemStyle}"/>
         </StackPanel>
