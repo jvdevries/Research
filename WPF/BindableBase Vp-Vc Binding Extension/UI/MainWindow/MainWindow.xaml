@@ -37,7 +37,17 @@
                     Command="{Binding ElementName=ColorPicker, Path=DPRestoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Remove Favorite"
                     Command="{Binding ElementName=ColorPicker, Path=DPRemoveFavorite}"/>
-            <TextBox Text="{Binding FavoritesHistory, Mode=OneWay}"/>
+            <TextBlock Text="{Binding FavoritesHistory, Mode=OneWay}">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                </TextBlock>
         </StackPanel>
         <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
         <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
