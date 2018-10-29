@@ -34,9 +34,8 @@ namespace MVVM_Lib
 
         public DependencyProperty CreateDPBinding(string ViewModelPropertyName, string DependencyPropertyName)
         {
-            // if VAR -> CS1976 on OnDPChanged in next line.
             PropertyInfo VMPropertyInfo = ViewModel.GetType().GetProperty(ViewModelPropertyName);
-            var DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
+            DependencyProperty DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
 
             var BinderEntry = new Binding
             {
@@ -89,7 +88,7 @@ namespace MVVM_Lib
         #region Notify View
         public void SetDP<T>(string name, T value)
         {
-            var ChangedEntry =
+            Binding ChangedEntry =
                 (from ViewModelBinderEntry in BinderEntries.AsEnumerable()
                  where ViewModelBinderEntry.VMPropertyName == name
                  select ViewModelBinderEntry)

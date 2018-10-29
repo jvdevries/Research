@@ -4,7 +4,7 @@ using MVVM_Lib;
 
 namespace DPBindableBase
 {
-    public class ColorPickerVM : MVVM_Lib.DPBindableBase, IColorPickerVM 
+    public class ColorPickerVM : MVVM_Lib.DPBindableBase, IColorPickerVM
     {
         public SolidColorBrush SelectedColor
         {
