@@ -7,25 +7,37 @@ namespace DPBindableBase
 {
     public partial class ColorPicker : UserControl
     {
-        private ColorPickerVM ViewModel => (ColorPickerVM)Resources[nameof(ViewModel)];
+        // The ColorPicker View requires access to the ViewModel for V -> VM syncing.
+        // An interface is used to show that the ViewModel is easily replacable.
+        // "IColorPicker: IDPBindableBase" declares the ViewModel Properties and their accessors.
+        private IColorPickerVM ViewModel => (IColorPickerVM)Resources[nameof(ViewModel)];
 
         public ColorPicker()
         {
             InitializeComponent();
 
-            var _DPVMBindings = new DPVMBinding(this, ViewModel); // Binds DP to VM
-            ViewModel.DPViewModelBindings = _DPVMBindings; // Inform VM about our bindings
+            // BoilerPlate code: initialises the Binder to View and ViewModel.
+            var binder = new DPVMBinding(this, ViewModel);
 
-            DependencyProperty DPSelectedColor = _DPVMBindings.CreateDPBinding(nameof(ViewModel.SelectedColor), nameof(DPSelectedColor));
-            DependencyProperty DPStoreFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.StoreFavoriteCommand), nameof(DPStoreFavoriteCommand));
-            DependencyProperty DPRestoreFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.RestoreFavoriteCommand), nameof(DPRestoreFavoriteCommand));
-            DependencyProperty DPRemoveFavoriteCommand = _DPVMBindings.CreateDPBinding(nameof(ViewModel.RemoveFavoriteCommand), nameof(DPRemoveFavoriteCommand));
+            // BoilerPlate code: set the Binder in the ViewModel for VM -> V syncing.
+            // Note: "ColorPickerVM: DPBindableBase, IColorPickerVM" has no code for this.
+            ViewModel.SetDPViewModelBindings(binder);
+
+            // For Blog layout purposes, these are pre-defined here to minimize the line-length.
+            // Note: nameof() requires a Type definition to work, so var cannot be used.
+            DependencyProperty DPSelectedColor, DPStoreFavorite, DPRestoreFavorite, DPRemoveFavorite;
+
+            // Setup binding points for the Parent's View, and sync them to the VM Properties.
+            DPSelectedColor = binder.CreateDPBinding(nameof(ViewModel.SelectedColor), nameof(DPSelectedColor));
+            DPStoreFavorite = binder.CreateDPBinding(nameof(ViewModel.StoreFavorite), nameof(DPStoreFavorite));
+            DPRestoreFavorite = binder.CreateDPBinding(nameof(ViewModel.RestoreFavorite), nameof(DPRestoreFavorite));
+            DPRemoveFavorite = binder.CreateDPBinding(nameof(ViewModel.RemoveFavorite), nameof(DPRemoveFavorite));
         }
 
-        // Parameter for the View
+        // This allows the Parent's View to pass an ItemStyle to the ColorPicker items.
         public Style ItemStyle { get; set; }
 
-        // Parameter for the View
+        // This allows the Parent's View to pass an the Colors for the ColorPicker.
         public SolidColorBrush[] Colors { get; set; }
     }
 }

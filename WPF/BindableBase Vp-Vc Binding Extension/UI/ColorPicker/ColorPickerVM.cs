@@ -20,19 +20,19 @@ namespace DPBindableBase
         }
         private SolidColorBrush _FavoriteColor;
 
-        public ICommand RestoreFavoriteCommand => new RelayCommand(x =>
+        public ICommand RestoreFavorite => new RelayCommand(x =>
         {
             SelectedColor = FavoriteColor;
         },
         x => FavoriteColor != null);
 
-        public ICommand StoreFavoriteCommand => new RelayCommand(x =>
+        public ICommand StoreFavorite => new RelayCommand(x =>
         {
             FavoriteColor = SelectedColor;
         },
         x => SelectedColor != null);
 
-        public ICommand RemoveFavoriteCommand => new RelayCommand(x =>
+        public ICommand RemoveFavorite => new RelayCommand(x =>
         {
             FavoriteColor = null;
         });

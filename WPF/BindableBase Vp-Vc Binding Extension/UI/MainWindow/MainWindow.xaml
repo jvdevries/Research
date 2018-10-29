@@ -33,11 +33,11 @@
             <Label Margin="10" Height="50" Width="50" BorderBrush="Black" BorderThickness="1"
                Background="{Binding ElementName=ColorPicker, Path=DPSelectedColor}"/>
             <Button Margin="10" Height="30" Content="Make Favorite"
-                Command="{Binding ElementName=ColorPicker, Path=DPStoreFavoriteCommand}"/>
+                Command="{Binding ElementName=ColorPicker, Path=DPStoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Restore Favorite"
-                    Command="{Binding ElementName=ColorPicker, Path=DPRestoreFavoriteCommand}"/>
+                    Command="{Binding ElementName=ColorPicker, Path=DPRestoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Remove Favorite"
-                    Command="{Binding ElementName=ColorPicker, Path=DPRemoveFavoriteCommand}"/>
+                    Command="{Binding ElementName=ColorPicker, Path=DPRemoveFavorite}"/>
         </StackPanel>
         <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
         <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>

@@ -34,8 +34,11 @@ namespace MVVM_Lib
 
         public DependencyProperty CreateDPBinding(string ViewModelPropertyName, string DependencyPropertyName)
         {
+            // Usage of var for VMPropertyInfo turns it into a dynamic, which causes an 
+            // CS1976 error on the OnDPChanged in the DependencyProperty.Register(...) line.
             PropertyInfo VMPropertyInfo = ViewModel.GetType().GetProperty(ViewModelPropertyName);
-            DependencyProperty DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
+            var DP = DependencyProperty.Register(DependencyPropertyName, VMPropertyInfo.PropertyType, 
+                ViewType, new FrameworkPropertyMetadata(GetVMPropertyValue(VMPropertyInfo), OnDPChanged));
 
             var BinderEntry = new Binding
             {
@@ -56,7 +59,8 @@ namespace MVVM_Lib
         private void OnDPChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
             => OnDPChanged(d, e, e.NewValue);
 
-        private void OnDPChanged<T>(DependencyObject d, DependencyPropertyChangedEventArgs e, T Value) where T : class
+        private void OnDPChanged<T>(DependencyObject d, 
+            DependencyPropertyChangedEventArgs e, T Value) where T : class
         {
             var oldValue = (T)e.OldValue;
 

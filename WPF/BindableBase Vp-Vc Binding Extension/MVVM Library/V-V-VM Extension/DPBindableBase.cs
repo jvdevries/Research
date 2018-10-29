@@ -2,9 +2,10 @@
 
 namespace MVVM_Lib
 {
-    public abstract class DPBindableBase : BindableBase
+    public abstract class DPBindableBase : BindableBase, IDPBindableBase
     {
         public DPVMBinding DPViewModelBindings;
+
         public void SetDPViewModelBindings(DPVMBinding binding)
             => DPViewModelBindings = binding;
 

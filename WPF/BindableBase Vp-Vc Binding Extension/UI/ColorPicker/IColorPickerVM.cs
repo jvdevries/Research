@@ -4,11 +4,11 @@ using MVVM_Lib;
 
 namespace DPBindableBase
 {
-    public interface IColorPickerVM
+    public interface IColorPickerVM : IDPBindableBase
     {
         SolidColorBrush SelectedColor { get; set; }
-        ICommand StoreFavoriteCommand { get; }
-        ICommand RestoreFavoriteCommand { get; }
-        ICommand RemoveFavoriteCommand { get; }
+        ICommand StoreFavorite { get; }
+        ICommand RestoreFavorite { get; }
+        ICommand RemoveFavorite { get; }
     }
 }

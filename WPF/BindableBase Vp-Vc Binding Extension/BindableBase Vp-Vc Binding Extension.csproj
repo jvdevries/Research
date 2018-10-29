@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="MVVM Library\Prism Derived Base MVVM\BindableBase.cs" />
     <Compile Include="MVVM Library\Prism Derived Base MVVM\RelayCommand.cs" />
+    <Compile Include="MVVM Library\V-V-VM Extension\IDPBindableBase.cs" />
     <Compile Include="MVVM Library\V-V-VM Extension\DPBindableBase.cs" />
     <Compile Include="MVVM Library\V-V-VM Extension\DPVMBinding.cs" />
     <Compile Include="UI\ColorPicker\ColorPicker.xaml.cs">
