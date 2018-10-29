@@ -65,7 +65,8 @@
     </Compile>
     <Compile Include="UI\ColorPicker\IColorPickerVM.cs" />
     <Compile Include="UI\ColorPicker\ColorPickerVM.cs" />
-    <Compile Include="UI\MainWindow\MainWindow.cs" />
+    <Compile Include="Models\FavoritesHistoryModel.cs" />
+    <Compile Include="UI\MainWindow\MainWindowVM.cs" />
     <Compile Include="UI\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

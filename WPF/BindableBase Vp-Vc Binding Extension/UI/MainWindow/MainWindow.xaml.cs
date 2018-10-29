@@ -20,9 +20,16 @@ namespace DPBindableBase
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+	    private MainWindowVM ViewModel => (MainWindowVM)Resources[nameof(ViewModel)];
         public MainWindow()
 		{
             InitializeComponent();
+
+		    CompositionTarget.Rendering += OnRendering;
         }
+	    void OnRendering(object sender, EventArgs e)
+	    {
+	        ViewModel?.PullFavoritesHistory();
+	    }
     }
 }

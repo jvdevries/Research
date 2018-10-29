@@ -29,6 +29,7 @@ namespace DPBindableBase
         public ICommand StoreFavorite => new RelayCommand(x =>
         {
             FavoriteColor = SelectedColor;
+            FavoritesHistoryModel.Add(FavoriteColor.ToString());
         },
         x => SelectedColor != null);
 

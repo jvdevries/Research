@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:src="clr-namespace:DPBindableBase"
-        Title="MainWindow" Height="350" Width="350">
+        Title="MainWindow" Height="400" Width="350">
     <Window.Resources>
-        <src:MainModel x:Key="ViewModel"/>
+        <src:MainWindowVM x:Key="ViewModel"/>
         <x:Array x:Key="ColorSelectorColors" Type="{x:Type SolidColorBrush}">
             <SolidColorBrush>White</SolidColorBrush>
             <SolidColorBrush>Red</SolidColorBrush>
@@ -25,10 +25,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="MainWindow" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="MainWindow" Grid.Row="0" Grid.Column="0"/>
         <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Label Margin="10" Height="50" Width="50" BorderBrush="Black" BorderThickness="1"
                Background="{Binding ElementName=ColorPicker, Path=DPSelectedColor}"/>
@@ -38,9 +37,10 @@
                     Command="{Binding ElementName=ColorPicker, Path=DPRestoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Remove Favorite"
                     Command="{Binding ElementName=ColorPicker, Path=DPRemoveFavorite}"/>
+            <TextBox Text="{Binding FavoritesHistory, Mode=OneWay}"/>
         </StackPanel>
         <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
-        <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
+        <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="1">
             <src:ColorPicker 
             x:Name="ColorPicker"
