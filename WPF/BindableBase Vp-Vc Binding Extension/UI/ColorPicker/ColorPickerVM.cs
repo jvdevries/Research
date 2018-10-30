@@ -15,7 +15,7 @@ namespace DPBindableBase
                 SelectedColorsHistoryModel.Add(_SelectedColor.ToString());
             }
         }
-        private SolidColorBrush _SelectedColor;
+        private SolidColorBrush _SelectedColor = new SolidColorBrush(Colors.Gold);
 
         public SolidColorBrush FavoriteColor
         {

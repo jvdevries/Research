@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="MainWindow" Grid.Row="0" Grid.Column="0"/>
-        <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+        <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1">
             <Label Margin="10" Height="50" Width="50" BorderBrush="Black" BorderThickness="1"
                Background="{Binding ElementName=ColorPicker, Path=DPSelectedColor}"/>
             <Button Margin="10" Height="30" Content="Make Favorite"
@@ -49,7 +49,7 @@
                 </TextBlock.Style>
                 </TextBlock>
         </StackPanel>
-        <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
+        <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
         <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="1">
             <src:ColorPicker 

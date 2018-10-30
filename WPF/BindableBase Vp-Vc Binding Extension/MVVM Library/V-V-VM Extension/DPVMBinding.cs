@@ -24,6 +24,9 @@ namespace MVVM_Lib
         
         public DPVMBinding(DependencyObject View, dynamic ViewModel)
         {
+            Debug.Assert(View != null);
+            Debug.Assert(!(ViewModel is null));
+
             this.View = View;
             this.ViewModel = ViewModel;
 
@@ -32,8 +35,12 @@ namespace MVVM_Lib
             ViewType = View.GetType();
         }
 
+        // Create's a syncable DependencyProperty.
         public DependencyProperty CreateDPBinding(string ViewModelPropertyName, string DependencyPropertyName)
         {
+            Debug.Assert(ViewModelPropertyName != null);
+            Debug.Assert(DependencyPropertyName != null);
+
             // Usage of var for VMPropertyInfo turns it into a dynamic, which causes an 
             // CS1976 error on the OnDPChanged in the DependencyProperty.Register(...) line.
             PropertyInfo VMPropertyInfo = ViewModel.GetType().GetProperty(ViewModelPropertyName);
@@ -52,10 +59,16 @@ namespace MVVM_Lib
             return DP;
         }
 
+        // Set DP to initial value of VM.
         private object GetVMPropertyValue(PropertyInfo VMPropertyInfo)
-            => VMPropertyInfo.GetValue(ViewModel, null);
+        {
+            Debug.Assert(VMPropertyInfo != null);
 
-        #region Notify ViewModel
+            return VMPropertyInfo.GetValue(ViewModel, null);
+        }
+
+
+        #region Sync ViewModel when View changed
         private void OnDPChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
             => OnDPChanged(d, e, e.NewValue);
 
@@ -89,18 +102,22 @@ namespace MVVM_Lib
             => OnDPChanged(d, e, (object)Value);
         #endregion
 
-        #region Notify View
-        public void SetDP<T>(string name, T value)
+        #region Sync View when ViewModel Changed
+        public void OnVMChanged<T>(string name, T value)
         {
-            Binding ChangedEntry =
+            Debug.Assert(name != null);
+            // Value may be null
+
+            var ChangedEntry =
                 (from ViewModelBinderEntry in BinderEntries.AsEnumerable()
                  where ViewModelBinderEntry.VMPropertyName == name
-                 select ViewModelBinderEntry)
-                 .FirstOrDefault();
+                 select ViewModelBinderEntry);
+            var ChangedEntryCount = ChangedEntry.Count();
 
-            if (ChangedEntry.Equals(default(Binding))) return;
+            Debug.Assert(ChangedEntryCount == 0 || ChangedEntryCount == 1);
 
-            View.SetValue(ChangedEntry.DP, value);
+            if (ChangedEntryCount == 1)
+                View.SetValue(ChangedEntry.First().DP, value);
         }
         #endregion
     }
