@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace DPBindableBase
 {
-    public static class FavoritesHistoryModel
+    public static class SelectedColorsHistoryModel
     {
         private static readonly List<string> madeFavorites = new List<string>();
 

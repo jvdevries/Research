@@ -15,7 +15,7 @@ namespace DPBindableBase
 
         public void PullFavoritesHistory()
         {
-            FavoritesHistory = FavoritesHistoryModel.Get();
+            FavoritesHistory = SelectedColorsHistoryModel.Get();
         }
     }
 }

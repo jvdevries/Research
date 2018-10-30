@@ -9,7 +9,11 @@ namespace DPBindableBase
         public SolidColorBrush SelectedColor
         {
             get => _SelectedColor;
-            set => SetProperty(ref _SelectedColor, value, nameof(SelectedColor));
+            set
+            {
+                SetProperty(ref _SelectedColor, value, nameof(SelectedColor));
+                SelectedColorsHistoryModel.Add(_SelectedColor.ToString());
+            }
         }
         private SolidColorBrush _SelectedColor;
 
@@ -29,7 +33,6 @@ namespace DPBindableBase
         public ICommand StoreFavorite => new RelayCommand(x =>
         {
             FavoriteColor = SelectedColor;
-            FavoritesHistoryModel.Add(FavoriteColor.ToString());
         },
         x => SelectedColor != null);
 
