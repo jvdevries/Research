@@ -5,13 +5,6 @@
         Title="MainWindow" Height="400" Width="350">
     <Window.Resources>
         <src:MainWindowVM x:Key="ViewModel"/>
-        <x:Array x:Key="ColorSelectorColors" Type="{x:Type SolidColorBrush}">
-            <SolidColorBrush>White</SolidColorBrush>
-            <SolidColorBrush>Red</SolidColorBrush>
-            <SolidColorBrush>Green</SolidColorBrush>
-			<SolidColorBrush>Blue</SolidColorBrush>
-            <SolidColorBrush>Black</SolidColorBrush>
-        </x:Array>
         <Style x:Key="ColorSelectorItemStyle" TargetType="{x:Type Rectangle}">
             <Setter Property="Width" Value="40"/>
             <Setter Property="Height" Value="40"/>
@@ -30,14 +23,14 @@
         <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="MainWindow" Grid.Row="0" Grid.Column="0"/>
         <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1">
             <Label Margin="10" Height="50" Width="50" BorderBrush="Black" BorderThickness="1"
-               Background="{Binding ElementName=ColorPicker, Path=DPSelectedColor}"/>
+               Background="{Binding ElementName=MainWindowColorPicker, Path=DPSelectedColor}"/>
             <Button Margin="10" Height="30" Content="Make Favorite"
-                Command="{Binding ElementName=ColorPicker, Path=DPStoreFavorite}"/>
+                Command="{Binding ElementName=MainWindowColorPicker, Path=DPStoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Restore Favorite"
-                    Command="{Binding ElementName=ColorPicker, Path=DPRestoreFavorite}"/>
+                    Command="{Binding ElementName=MainWindowColorPicker, Path=DPRestoreFavorite}"/>
             <Button Margin="10" Height="30" Content="Remove Favorite"
-                    Command="{Binding ElementName=ColorPicker, Path=DPRemoveFavorite}"/>
-            <TextBlock Text="{Binding FavoritesHistory, Mode=OneWay}">
+                    Command="{Binding ElementName=MainWindowColorPicker, Path=DPRemoveFavorite}"/>
+            <TextBlock x:Name="MainWindowSelectedColorsHistory"  Text="{Binding FavoritesHistory, Mode=OneWay}">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
@@ -47,15 +40,14 @@
                         </Style.Triggers>
                     </Style>
                 </TextBlock.Style>
-                </TextBlock>
+            </TextBlock>
         </StackPanel>
         <Rectangle Fill="LightBlue" IsHitTestVisible="False" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
         <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center" Text="ColorPicker (UserControl)" Grid.Row="0" Grid.Column="1"/>
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="1">
             <src:ColorPicker 
-            x:Name="ColorPicker"
-            Colors="{StaticResource ColorSelectorColors}"
-            ItemStyle="{StaticResource ColorSelectorItemStyle}"/>
+                x:Name="MainWindowColorPicker"
+                ItemStyle="{StaticResource ColorSelectorItemStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

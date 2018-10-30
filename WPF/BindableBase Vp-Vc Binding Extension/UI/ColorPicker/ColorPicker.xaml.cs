@@ -26,7 +26,7 @@ namespace DPBindableBase
             // For Blog layout purposes, these are pre-defined here to minimize the line-length.
             // Note: nameof() requires a Type definition to work, so var cannot be used.
             DependencyProperty DPSelectedColor, DPStoreFavorite, DPRestoreFavorite, DPRemoveFavorite;
-
+            
             // Setup binding points for the Parent's View, and sync them to the VM Properties.
             DPSelectedColor = binder.CreateDPBinding(nameof(ViewModel.SelectedColor), nameof(DPSelectedColor));
             DPStoreFavorite = binder.CreateDPBinding(nameof(ViewModel.StoreFavorite), nameof(DPStoreFavorite));
@@ -36,8 +36,5 @@ namespace DPBindableBase
 
         // This allows the Parent's View to pass an ItemStyle to the ColorPicker items.
         public Style ItemStyle { get; set; }
-
-        // This allows the Parent's View to pass an the Colors for the ColorPicker.
-        public SolidColorBrush[] Colors { get; set; }
     }
 }

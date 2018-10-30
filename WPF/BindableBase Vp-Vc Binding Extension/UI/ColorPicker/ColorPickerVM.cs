@@ -22,6 +22,7 @@ namespace DPBindableBase
             get => _FavoriteColor;
             set => SetProperty(ref _FavoriteColor, value, nameof(FavoriteColor));
         }
+
         private SolidColorBrush _FavoriteColor;
 
         public ICommand RestoreFavorite => new RelayCommand(x =>
