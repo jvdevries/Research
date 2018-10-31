@@ -12,7 +12,7 @@ namespace DPBindableBase
             set
             {
                 SetProperty(ref _SelectedColor, value, nameof(SelectedColor));
-                SelectedColorsHistoryModel.Add(_SelectedColor.ToString());
+                SelectedColorsHistoryModel.Add(_SelectedColor);
             }
         }
         private SolidColorBrush _SelectedColor = new SolidColorBrush(Colors.Gold);

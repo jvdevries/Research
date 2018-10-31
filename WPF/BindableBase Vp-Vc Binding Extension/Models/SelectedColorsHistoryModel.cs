@@ -10,11 +10,29 @@ namespace DPBindableBase
     {
         private static readonly List<string> MadeFavorites = new List<string>();
 
-        public static void Add(string toAdd)
+        public static void Add(SolidColorBrush selectedColor)
         {
             if (MadeFavorites.Count == 3)
                 MadeFavorites.RemoveAt(0);
-            MadeFavorites.Add(toAdd);
+            MadeFavorites.Add(getColorName(selectedColor));
+        }
+
+        private static string getColorName(SolidColorBrush selectedColor)
+        {
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.Black).Color))
+                return "Black";
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.White).Color))
+                return "White";
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.Red).Color))
+                return "Red";
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.Green).Color))
+                return "Green";
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.Blue).Color))
+                return "Blue";
+            if (selectedColor.Color.Equals(new SolidColorBrush(Colors.Gold).Color))
+                return "Gold";
+
+            return "Unknown";
         }
 
         public static string Get()
