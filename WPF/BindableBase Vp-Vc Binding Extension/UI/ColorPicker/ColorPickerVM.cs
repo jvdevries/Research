@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Linq;
+using System.Windows.Input;
 using System.Windows.Media;
 using MVVM_Lib;
 
@@ -6,16 +7,31 @@ namespace DPBindableBase
 {
     public class ColorPickerVM : MVVM_Lib.DPBindableBase, IColorPickerVM
     {
+        public SolidColorBrush[] Colors
+        {
+            get => _Colors;
+            set => SetProperty(ref _Colors, value, nameof(Colors));
+        }
+        private SolidColorBrush[] _Colors = 
+        {
+            new SolidColorBrush(System.Windows.Media.Colors.White),
+            new SolidColorBrush(System.Windows.Media.Colors.Black),
+            new SolidColorBrush(System.Windows.Media.Colors.Red),
+            new SolidColorBrush(System.Windows.Media.Colors.Green),
+            new SolidColorBrush(System.Windows.Media.Colors.Blue)
+        };
+
+
         public SolidColorBrush SelectedColor
         {
-            get => _SelectedColor;
+            get => _SelectedColor ?? (_SelectedColor = Colors.FirstOrDefault());
             set
             {
                 SetProperty(ref _SelectedColor, value, nameof(SelectedColor));
                 SelectedColorsHistoryModel.Add(_SelectedColor);
             }
         }
-        private SolidColorBrush _SelectedColor = new SolidColorBrush(Colors.Gold);
+        private SolidColorBrush _SelectedColor;
 
         public SolidColorBrush FavoriteColor
         {

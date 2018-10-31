@@ -6,6 +6,7 @@ namespace DPBindableBase
 {
     public interface IColorPickerVM : IDPBindableBase
     {
+        SolidColorBrush[] Colors { get; set; }
         SolidColorBrush SelectedColor { get; set; }
         ICommand StoreFavorite { get; }
         ICommand RestoreFavorite { get; }

@@ -25,9 +25,10 @@ namespace DPBindableBase
 
             // For Blog layout purposes, these are pre-defined here to minimize the line-length.
             // Note: nameof() requires a Type definition to work, so var cannot be used.
-            DependencyProperty DPSelectedColor, DPStoreFavorite, DPRestoreFavorite, DPRemoveFavorite;
-            
+            DependencyProperty DPSelectedColor, DPStoreFavorite, DPRestoreFavorite, DPRemoveFavorite, DPColors;
+
             // Setup binding points for the Parent's View, and sync them to the VM Properties.
+            DPColors = binder.CreateDPBinding(nameof(ViewModel.Colors), nameof(DPColors));
             DPSelectedColor = binder.CreateDPBinding(nameof(ViewModel.SelectedColor), nameof(DPSelectedColor));
             DPStoreFavorite = binder.CreateDPBinding(nameof(ViewModel.StoreFavorite), nameof(DPStoreFavorite));
             DPRestoreFavorite = binder.CreateDPBinding(nameof(ViewModel.RestoreFavorite), nameof(DPRestoreFavorite));

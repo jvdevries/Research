@@ -7,18 +7,13 @@
              xmlns:main="clr-namespace:DPBindableBase">
     <UserControl.Resources>
         <main:ColorPickerVM x:Key="ViewModel"/>
-        <x:Array x:Key="Colors" Type="{x:Type SolidColorBrush}">
-            <SolidColorBrush>White</SolidColorBrush>
-            <SolidColorBrush>Red</SolidColorBrush>
-            <SolidColorBrush>Green</SolidColorBrush>
-            <SolidColorBrush>Blue</SolidColorBrush>
-            <SolidColorBrush>Black</SolidColorBrush>
-        </x:Array>
     </UserControl.Resources>
 
     <Grid>
         <StackPanel>
-            <ComboBox Name="ColorSelector" ItemsSource="{StaticResource Colors}" SelectedItem="{Binding Path=DPSelectedColor, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}">
+            <ComboBox Name="ColorSelector" 
+                      ItemsSource="{Binding Path=DPColors, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}"
+                      SelectedItem="{Binding Path=DPSelectedColor, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:ColorPicker}}}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="SolidColorBrush">
                         <Rectangle Style="{Binding ItemStyle, RelativeSource={RelativeSource AncestorType={x:Type main:ColorPicker}}}" Fill="{Binding}"/>
