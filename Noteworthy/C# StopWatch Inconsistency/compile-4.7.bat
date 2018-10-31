@@ -18,6 +18,8 @@ set COMPILEOPTIONS=/platform:x86 /optimize+ /reference:"C:\Program Files (x86)\R
 "S:\Progs\VS2017\MSBuild\15.0\Bin\Roslyn\csc.exe" ConsoleSlow.cs 	%COMPILEOPTIONS%
 "S:\Progs\VS2017\MSBuild\15.0\Bin\Roslyn\csc.exe" FileFast.cs 		%COMPILEOPTIONS%
 "S:\Progs\VS2017\MSBuild\15.0\Bin\Roslyn\csc.exe" FileSlow.cs		%COMPILEOPTIONS%
+"S:\Progs\VS2017\MSBuild\15.0\Bin\Roslyn\csc.exe" FileFastQPC.cs	%COMPILEOPTIONS%
+"S:\Progs\VS2017\MSBuild\15.0\Bin\Roslyn\csc.exe" FileSlowQPC.cs	%COMPILEOPTIONS%
 goto DONE
 
 :DONE

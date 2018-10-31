@@ -1,11 +1,11 @@
 ### The FAST/SLOW difference is only insignificant lines ###
 Comparing files ConsoleFast.cs and CONSOLESLOW.CS
 ***** ConsoleFast.cs
-            Console.WriteLine("Ticks " + (stop - start));
+            Console.WriteLine("Time " + stopwatch.Elapsed.TotalMilliseconds);
             Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
         }
 ***** CONSOLESLOW.CS
-            Console.WriteLine("Ticks " + (stop - start));
+            Console.WriteLine("Time " + stopwatch.Elapsed.TotalMilliseconds);
 
         }
 *****
@@ -21,31 +21,55 @@ Comparing files FileFast.cs and FILESLOW.CS
             File.WriteAllText(@"file.txt", output.ToString());
 *****
 
+Comparing files FileFastQPC.cs and FILESLOWQPC.CS
+***** FileFastQPC.cs
+            output.AppendLine("Ticks " + (stop - start));
+            output.AppendLine("Stopwatch/QPC is bad!!!"); // speed toogle
+            File.WriteAllText(@"file.txt", output.ToString());
+***** FILESLOWQPC.CS
+            output.AppendLine("Ticks " + (stop - start));
+
+            File.WriteAllText(@"file.txt", output.ToString());
+*****
+
 
 ### The time used for executing each EXE is the same according to batch ###
-Console-Fast Time Taken : 00:00:04,62
-Console-Slow Time Taken : 00:00:04,68
-File-Fast Time Taken : 00:00:04,55
-File-Slow Time Taken : 00:00:04,66
+Console-Fast Time Taken : 00:00:04,83
+Console-Slow Time Taken : 00:00:04,64
+File-Fast Time Taken : 00:00:04,69
+File-Slow Time Taken : 00:00:04,72
+File-Fast Time Taken : 00:00:05,74
+File-Slow Time Taken : 00:00:06,17
 
 ### Although SUM results are the same, the stopwatch ticks is not (yet freq is) ###
 ----- console-fast.txt -----
 Sum 33333333
 Freq 10000000
-Ticks 1026890
+Ticks 2234228
+Time 223.4226
 Stopwatch/QPC is bad!!!
 
 ----- console-slow.txt -----
 Sum 33333333
 Freq 10000000
-Ticks 2139356
+Ticks 1151076
+Time 115.1075
 
 ----- file-fast.txt -----
 Sum 33333333
-Ticks 1023068
+Ticks 1192367
 Stopwatch/QPC is bad!!!
 
 ----- file-slow.txt -----
 Sum 33333333
-Ticks 1810861
+Ticks 1966941
+
+----- file-fastQPC.txt -----
+Sum 33333333
+Ticks 2632371
+Stopwatch/QPC is bad!!!
+
+----- file-slowQPC.txt -----
+Sum 33333333
+Ticks 1814502
 

@@ -10,12 +10,18 @@ echo.
 echo ### The time used for executing each EXE is the same according to batch ###
 call :PROCESSCALL "ConsoleFast.exe > console-fast.txt" "Console-Fast"
 call :PROCESSCALL "ConsoleSlow.exe > console-slow.txt" "Console-Slow"
-call :PROCESSCALL "FileFast.exe" "File-Fast"
 del file-fast.txt
+call :PROCESSCALL "FileFast.exe" "File-Fast"
 ren file.txt file-fast.txt
-call :PROCESSCALL "FileSlow.exe" "File-Slow"
 del file-slow.txt
+call :PROCESSCALL "FileSlow.exe" "File-Slow"
 ren file.txt file-slow.txt
+del file-fastQPC.txt
+call :PROCESSCALL "FileFastQPC.exe" "File-Fast"
+ren file.txt file-fastQPC.txt
+del file-slowQPC.txt
+call :PROCESSCALL "FileSlowQPC.exe" "File-Slow"
+ren file.txt file-slowQPC.txt
 echo.
 
 echo ### Although SUM results are the same, the stopwatch ticks is not (yet freq is) ###
@@ -23,11 +29,14 @@ call :PRINTRESULT "console-fast.txt"
 call :PRINTRESULT "console-slow.txt"
 call :PRINTRESULT "file-fast.txt"
 call :PRINTRESULT "file-slow.txt"
+call :PRINTRESULT "file-fastQPC.txt"
+call :PRINTRESULT "file-slowQPC.txt"
 goto DONE
 
 :PRINT_PROOF_FILE_DIFFERENCES
 fc ConsoleFast.cs ConsoleSlow.cs
 fc FileFast.cs FileSlow.cs
+fc FileFastQPC.cs FileSlowQPC.cs
 goto DONE
 
 :PROCESSCALL

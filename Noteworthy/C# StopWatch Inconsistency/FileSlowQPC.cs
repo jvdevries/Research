@@ -1,29 +1,34 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Runtime.InteropServices;
 
 namespace StopwatchInconsistentResults
 {
     class StopwatchInconsistentResults
     {
-        static void Main()
+		[DllImport("KERNEL32")]
+        private static extern bool QueryPerformanceCounter(out long lpPerformanceCount);
+
+		static void Main()
         {
-           	var stopwatch = new Stopwatch();
-            Object[] TestArray = MakeTestArray(100000000);
+			var Proc = Process.GetCurrentProcess();
+			Proc.ProcessorAffinity = (IntPtr)1;
 
-            double freq = Stopwatch.Frequency;
-            stopwatch.Start();
-			long start = Stopwatch.GetTimestamp();
+			Object[] TestArray = MakeTestArray(100000000);
+
+            QueryPerformanceCounter(out long start);
             int sum = CastAndCalculateSum(TestArray);
-            stopwatch.Stop();
-			long stop = Stopwatch.GetTimestamp();
+			QueryPerformanceCounter(out long stop);
             long ElapsedTicks = stop - start;
-            double ElapsedMsec = ElapsedTicks * (1000.0 / freq);
 
-            Console.WriteLine("Sum " + sum);
-            Console.WriteLine("Freq " + freq);
-            Console.WriteLine("Ticks " + (stop - start));
-            Console.WriteLine("Time " + stopwatch.Elapsed.TotalMilliseconds);
+            StringBuilder output = new StringBuilder();
 
+            output.AppendLine("Sum " + sum);
+            output.AppendLine("Ticks " + (stop - start));
+
+            File.WriteAllText(@"file.txt", output.ToString());
         }
 
         static Object[] MakeTestArray(int arrSize)
@@ -47,7 +52,7 @@ namespace StopwatchInconsistentResults
             {
                 if (o is int)
                 {
-                    int x = (int) o;
+                    int x = (int)o;
                     sum += x;
                 }
             }
