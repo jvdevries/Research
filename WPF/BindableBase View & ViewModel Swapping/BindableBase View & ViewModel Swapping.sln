@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindableBase Dynamic View Swapping", "BindableBase Dynamic View Swapping.csproj", "{3108E7CB-AE79-4142-8242-E1D09AA32D2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindableBase View & ViewModel Swapping", "BindableBase View & ViewModel Swapping.csproj", "{3108E7CB-AE79-4142-8242-E1D09AA32D2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

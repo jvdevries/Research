@@ -78,26 +78,26 @@ namespace EasyFramework
             void SwitchToCaseOne()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewA), typeof(ViewModelA));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB("");
+                if (ForceViewRefresh) CurrentUserControlVM = null;
                 CurrentUserControlVM = new ViewModelA(" - 1");
             }
             void SwitchToCaseTwo()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewB), typeof(ViewModelA));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelB("");
+                if (ForceViewRefresh) CurrentUserControlVM = null;
                 CurrentUserControlVM = new ViewModelA(" - 2");
             }
             void SwitchToCaseTree()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewA), typeof(ViewModelB));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA("");
-                CurrentUserControlVM = new ViewModelB(" - 1");
+                if (ForceViewRefresh) CurrentUserControlVM = null;
+                CurrentUserControlVM = new ViewModelB(" - 3");
             }
             void SwitchToCaseFour()
             {
                 ViewSwapper.Swap(ViewResources, typeof(ViewB), typeof(ViewModelB));
-                if (ForceViewRefresh) CurrentUserControlVM = new ViewModelA("");
-                CurrentUserControlVM = new ViewModelB(" - 2");
+                if (ForceViewRefresh) CurrentUserControlVM = null;
+                CurrentUserControlVM = new ViewModelB(" - 4");
             }
         }
     }

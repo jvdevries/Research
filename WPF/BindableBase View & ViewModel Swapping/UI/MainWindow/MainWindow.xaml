@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyFramework"
         mc:Ignorable="d"
-        Title="MainWinDow" Height="300" Width="800"
+        Title="MainWindow" Height="300" Width="600"
         d:DataContext="{d:DesignInstance local:MainWindowVM, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:ViewModelA}">
@@ -25,9 +25,9 @@
                     <Setter Property="Margin" Value="0,0,10,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Switch via Evil Pattern" Width="150" Command="{Binding SwitchViewAndOrViewModelBadPattern}"/>
-            <Button Content="Switch via Good Pattern" Width="150" Command="{Binding SwitchViewAndOrViewModelGoodPattern}"/>
-            <Label Content="Pre-Swap Hack"/>
+            <Button Content="Working Switching" Command="{Binding SwitchViewAndOrViewModelBadPattern}"/>
+            <Button Content="Broken Switching" Command="{Binding SwitchViewAndOrViewModelGoodPattern}"/>
+            <Label Content="Pre-Swap"/>
             <CheckBox IsChecked="{Binding ForceViewRefresh}" VerticalAlignment="Center"/>
             <Label Content="InvaliDatesImplicitDataTemplateResources"/>
             <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
