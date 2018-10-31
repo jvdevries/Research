@@ -1,6 +1,5 @@
 @echo off
-del summary.txt
-(call :MAKESUMMARY > summary.txt)
+for /l %%x in (1, 1, 9) do (call :MAKESUMMARY > summary%%x.txt)
 goto DONE
 
 : MAKESUMMARY
@@ -12,8 +11,10 @@ echo ### The time used for executing each EXE is the same according to batch ###
 call :PROCESSCALL "ConsoleFast.exe > console-fast.txt" "Console-Fast"
 call :PROCESSCALL "ConsoleSlow.exe > console-slow.txt" "Console-Slow"
 call :PROCESSCALL "FileFast.exe" "File-Fast"
+del file-fast.txt
 ren file.txt file-fast.txt
 call :PROCESSCALL "FileSlow.exe" "File-Slow"
+del file-slow.txt
 ren file.txt file-slow.txt
 echo.
 
