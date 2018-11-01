@@ -27,7 +27,7 @@
             </StackPanel.Resources>
             <Button Content="Working Switching" Command="{Binding SwitchViewAndOrViewModelBadPattern}"/>
             <Button Content="Broken Switching" Command="{Binding SwitchViewAndOrViewModelGoodPattern}"/>
-            <Label Content="Pre-Swap"/>
+            <Label Content="Pre-Null"/>
             <CheckBox IsChecked="{Binding ForceViewRefresh}" VerticalAlignment="Center"/>
             <Label Content="InvaliDatesImplicitDataTemplateResources"/>
             <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
