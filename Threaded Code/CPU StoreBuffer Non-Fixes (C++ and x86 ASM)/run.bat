@@ -13,6 +13,12 @@ prompt $G
 @echo.
 
 @echo|set /p="This should report a find eventually."
+@echo.
+@echo|set /p="But it is hard to trigger."
+"CLFLUSH Extra.exe" %runs% %printPer%
+@echo.
+
+@echo|set /p="This should report a find eventually."
 "_mm_clflush.exe" %runs% %printPer%
 @echo.
 

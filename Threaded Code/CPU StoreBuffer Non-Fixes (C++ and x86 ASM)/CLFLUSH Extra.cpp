@@ -15,7 +15,14 @@ DWORD WINAPI Thread1(LPVOID lpParam)
 							// we will end before it starts.
 
 	X = 1;
+	__asm sfence
+	__asm lfence
 	__asm clflush [X] // flush X write
+	__asm sfence
+	__asm lfence
+	__asm clflush [Y] // flush any pre-read Y value
+	__asm sfence
+	__asm lfence
 	r1 = X;
 	r2 = Y;
 
@@ -26,7 +33,14 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 	ready.store(true);
 
 	Y = 1;
+	__asm sfence
+	__asm lfence
 	__asm clflush [Y] // flush Y write
+	__asm sfence
+	__asm lfence
+	__asm clflush [X] // flush any pre-read X value
+	__asm sfence
+	__asm lfence
 	r3 = Y;
 	r4 = X;
 
