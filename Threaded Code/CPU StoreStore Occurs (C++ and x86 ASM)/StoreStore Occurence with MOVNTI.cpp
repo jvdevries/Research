@@ -21,22 +21,29 @@ DWORD WINAPI Thread1(LPVOID lpParam)
 }
 DWORD WINAPI Thread2(LPVOID lpParam)
 {
-    while (true)
-    {
+	while (true)
+	{
+		int dummyY = 0;
+		int dummyX = 0;
+		
     	// For making clear the read isn't the 
     	// problem: excessive usage of mfence.
     	__asm mfence
-    	int dY = Y;
+	    __asm mov eax, [Y];
     	__asm mfence
-		int dX = X;
+	    __asm mov ebx, [X];
+    	__asm mfence
+    	__asm mov [dummyY], eax
+    	__asm mfence
+    	__asm mov [dummyX], ebx
     	__asm mfence
     	
-		if (dX == 0 && dY == 2)
+		if (dummyX == 0 && dummyY == 2)
     	{
 			cout << "Found occurence" << endl;
 			exit(1);
     	}
-    	if (dX == 1 && dY == 2)
+    	if (dummyX == 1 && dummyY == 2)
     		return 0;
 	}
 	
