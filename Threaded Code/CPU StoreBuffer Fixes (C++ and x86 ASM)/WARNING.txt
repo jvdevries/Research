@@ -1,0 +1,1 @@
+The Weak Memory Model of MOVNTI was not investigated. That said, it does appear that NTIStoreLoad re-ordering does not occur (as opposed to NTIStoreStore re-ordering).

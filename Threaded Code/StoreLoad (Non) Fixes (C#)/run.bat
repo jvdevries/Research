@@ -5,19 +5,25 @@ prompt $G
 @echo on
 
 @echo|set /p="This should report a find eventually."
-"Caching possible and StoreLoad Swap possible.exe" %runs% %printPer%
+"Baseline.exe" %runs% %printPer%
 @echo.
 
 @echo|set /p="This should report a find eventually."
-"Caching possible and No StoreLoad Swap possible.exe" %runs% %printPer%
+"NoFix Volatile class.exe" %runs% %printPer%
 @echo.
 
 @echo|set /p="This should report a find eventually."
-"No Caching possible and StoreLoad Swap possible.exe" %runs% %printPer%
+"NoFix volatile.exe" %runs% %printPer%
+@echo.
+
+@echo|set /p="This should report a find eventually."
+@echo.
+@echo|set /p="It is however hard to trigger...."
+"NoFix Thread.Volatile.exe" %runs% %printPer%
 @echo.
 
 @echo|set /p="This should not find anything (but the test is too short to consider anything)."
-"No Caching possible and No StoreLoad Swap possible.exe" %runs% %printPer%
+"Fix MemoryBarrier.exe" %runs% %printPer%
 @echo.
 
 @echo off

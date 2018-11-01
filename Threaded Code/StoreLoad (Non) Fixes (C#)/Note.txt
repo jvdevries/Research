@@ -1,0 +1,1 @@
+This test can not differentiate between StoreLoad swap and Store-Forward buffering. Testing requires either knowing that the Store-Forward buffer was fixed (such as with Thread.Volatile), turning off caches in BIOS (untested), or by doing code inspection (was done).

@@ -5,19 +5,11 @@ prompt $G
 @echo on
 
 @echo|set /p="This should report a find eventually."
-"SFENCE + LFENCE.exe" %runs% %printPer%
-@echo.
-
-@echo|set /p="This should report a find eventually."
 "MOVNTI + SFENCE.exe" %runs% %printPer%
 @echo.
 
 @echo|set /p="This should report a find eventually."
-"CLFLUSH.exe" %runs% %printPer%
-@echo.
-
-@echo|set /p="This should report a find eventually."
-"_mm_clflush.exe" %runs% %printPer%
+"SFENCE + LFENCE.exe" %runs% %printPer%
 @echo.
 
 @echo off

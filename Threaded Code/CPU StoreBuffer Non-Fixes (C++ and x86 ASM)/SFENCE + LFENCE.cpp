@@ -17,6 +17,7 @@ DWORD WINAPI Thread1(LPVOID lpParam)
 	X = 1;
 	__asm SFENCE
 	__asm LFENCE
+	r1 = X;
 	r2 = Y;
 
 	return 0;
@@ -28,6 +29,7 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 	Y = 1;
 	__asm SFENCE
 	__asm LFENCE
+	r3 = Y;
 	r4 = X;
 
 	return 0;
