@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyFramework"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="600"
+        Title="MainWindow" Height="300" Width="400"
         d:DataContext="{d:DesignInstance local:MainWindowVM, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:ViewModelA}">
@@ -13,25 +13,37 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <CheckBox IsChecked="{Binding ForceViewRefresh}" VerticalAlignment="Center"/>
+            <Label Content="Nullify ContentControl Property before setting to new ViewModel"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
+            <Label Content="InvaliDatesImplicitDataTemplateResources"/>
+        </StackPanel>
+        </StackPanel>
+        <ContentControl Grid.Row="3" Grid.Column="0" Content="{Binding CurrentUserControlVM}"/>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Grid.Column="1">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="0,0,10,0"/>
+                    <Setter Property="Margin" Value="0,10,0,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Working Switching" Command="{Binding SwitchViewAndOrViewModelBadPattern}"/>
-            <Button Content="Broken Switching" Command="{Binding SwitchViewAndOrViewModelGoodPattern}"/>
-            <Label Content="Pre-Null"/>
-            <CheckBox IsChecked="{Binding ForceViewRefresh}" VerticalAlignment="Center"/>
-            <Label Content="InvaliDatesImplicitDataTemplateResources"/>
-            <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
+            <Button Content="Working Switching Sequence" Command="{Binding SwitchViewAndOrViewModelBadPattern}"/>
+            <Button Content="Broken Switching Sequence" Command="{Binding SwitchViewAndOrViewModelGoodPattern}"/>
+            <Button Content="Switch View" Command="{Binding SwitchView}"/>
+            <Button Content="Switch ViewModel" Command="{Binding SwitchViewModel}"/>
         </StackPanel>
-        <ContentControl Grid.Row="3" Content="{Binding CurrentUserControlVM}"/>
     </Grid>
 </Window>

@@ -1,53 +1,61 @@
-00361000 | 53                       | push ebx                                     |
-00361001 | 6A 01                    | push 1                                       |
-00361003 | FF15 08303600            | call dword ptr ds:[<&GetCurrentThread>]      |
-00361009 | 50                       | push eax                                     |
-0036100A | FF15 00303600            | call dword ptr ds:[<&SetThreadAffinityMask>] |
+00C61000 | 53                       | push ebx                                                                                             |
+00C61001 | B8 01000000              | mov eax,1                                                                                            |
+00C61006 | BB 02000000              | mov ebx,2                                                                                            |
+00C6100B | 0FAEF0                   | mfence                                                                                               |
+00C6100E | 0FC305 7C43C600          | movnti dword ptr ds:[C6437C],eax                                                                     |
+00C61015 | 891D 8043C600            | mov dword ptr ds:[C64380],ebx                                                                        |
+00C6101B | 33C0                     | xor eax,eax                                                                                          |
+00C6101D | 5B                       | pop ebx                                                                                              |
+00C6101E | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00C61021 | CC                       | int3                                                                                                 |
+00C61022 | CC                       | int3                                                                                                 |
+00C61023 | CC                       | int3                                                                                                 |
+00C61024 | CC                       | int3                                                                                                 |
+00C61025 | CC                       | int3                                                                                                 |
+00C61026 | CC                       | int3                                                                                                 |
+00C61027 | CC                       | int3                                                                                                 |
+00C61028 | CC                       | int3                                                                                                 |
+00C61029 | CC                       | int3                                                                                                 |
+00C6102A | CC                       | int3                                                                                                 |
+00C6102B | CC                       | int3                                                                                                 |
+00C6102C | CC                       | int3                                                                                                 |
+00C6102D | CC                       | int3                                                                                                 |
+00C6102E | CC                       | int3                                                                                                 |
+00C6102F | CC                       | int3                                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00C61030 | 83EC 0C                  | sub esp,C                                                                                            |
+00C61033 | 53                       | push ebx                                                                                             |
+00C61034 | 0F1F40 00                | nop dword ptr ds:[eax],eax                                                                           |
+00C61038 | 0F1F8400 00000000        | nop dword ptr ds:[eax+eax],eax                                                                       |
 
-00361010 | B8 01000000              | mov eax,1                                    |
-00361015 | BB 02000000              | mov ebx,2                                    |
-0036101A | 0FAEF0                   | mfence                                       |
-0036101D | 0FC305 7C433600          | movnti dword ptr ds:[36437C],eax             |
-00361024 | 891D 80433600            | mov dword ptr ds:[364380],ebx                |
-0036102A | 33C0                     | xor eax,eax                                  |
-0036102C | 5B                       | pop ebx                                      |
-0036102D | C2 0400                  | ret 4                                        |
+00C61040 | C74424 0C 00000000       | mov dword ptr ss:[esp+C],0                                                                           |
+00C61048 | C74424 08 00000000       | mov dword ptr ss:[esp+8],0                                                                           |
+00C61050 | A1 8043C600              | mov eax,dword ptr ds:[C64380]                                                                        |
+00C61055 | 0FAEF0                   | mfence                                                                                               |
+00C61058 | 8B1D 7C43C600            | mov ebx,dword ptr ds:[C6437C]                                                                        |
+00C6105E | 894424 0C                | mov dword ptr ss:[esp+C],eax                                                                         |
+00C61062 | 895C24 08                | mov dword ptr ss:[esp+8],ebx                                                                         |
+00C61066 | 837C24 08 01             | cmp dword ptr ss:[esp+8],1                                                                           |
+00C6106B | 74 30                    | je storestore occurence with movnti while.C6109D                                                     |
+00C6106D | 837C24 0C 02             | cmp dword ptr ss:[esp+C],2                                                                           |
+00C61072 | 75 CC                    | jne storestore occurence with movnti while.C61040                                                    |
 
-00361030 | 83EC 0C                  | sub esp,C                                    |
-00361033 | 53                       | push ebx                                     |
-00361034 | 6A 02                    | push 2                                       |
-00361036 | FF15 08303600            | call dword ptr ds:[<&GetCurrentThread>]      |
-0036103C | 50                       | push eax                                     |
-0036103D | FF15 00303600            | call dword ptr ds:[<&SetThreadAffinityMask>] |
-00361043 | 0F1F40 00                | nop dword ptr ds:[eax],eax                   |
-00361047 | 66:0F1F8400 00000000     | nop word ptr ds:[eax+eax],ax                 |
-
-00361050 | C74424 0C 00000000       | mov dword ptr ss:[esp+C],0                   |
-00361058 | C74424 08 00000000       | mov dword ptr ss:[esp+8],0                   |
-00361060 | A1 80433600              | mov eax,dword ptr ds:[364380]                |
-00361065 | 0FAEF0                   | mfence                                       |
-00361068 | 8B1D 7C433600            | mov ebx,dword ptr ds:[36437C]                |
-0036106E | 894424 0C                | mov dword ptr ss:[esp+C],eax                 |
-00361072 | 895C24 08                | mov dword ptr ss:[esp+8],ebx                 |
-00361076 | 837C24 08 01             | cmp dword ptr ss:[esp+8],1                   |
-0036107B | 74 30                    | je while for dbg.3610AD                      |
-0036107D | 837C24 0C 02             | cmp dword ptr ss:[esp+C],2                   |
-00361082 | 75 CC                    | jne while for dbg.361050                     |
-
-00361084 | 68 A0143600              | push while for dbg.3614A0                    |
-00361089 | 51                       | push ecx                                     | ecx:EntryPoint
-0036108A | 8B0D 6C303600            | mov ecx,dword ptr ds:[<&?cout@std@@3V?$basic | ecx:EntryPoint
-00361090 | BA 38313600              | mov edx,while for dbg.363138                 | edx:EntryPoint, 363138:"Found occurence"
-00361095 | E8 B6010000              | call while for dbg.361250                    |
-0036109A | 83C4 04                  | add esp,4                                    |
-0036109D | 8BC8                     | mov ecx,eax                                  | ecx:EntryPoint
-0036109F | FF15 48303600            | call dword ptr ds:[<&??6?$basic_ostream@GU?$ |
-003610A5 | 6A 01                    | push 1                                       |
-003610A7 | FF15 C4303600            | call dword ptr ds:[<&exit>]                  |
-003610AD | 33C0                     | xor eax,eax                                  |
-003610AF | 5B                       | pop ebx                                      |
-003610B0 | 83C4 0C                  | add esp,C                                    |
-003610B3 | C2 0400                  | ret 4                                        |
-003610B6 | CC                       | int3                                         |
-003610B7 | CC                       | int3                                         |
-003610B8 | CC                       | int3                                         |
+00C61074 | 68 A014C600              | push storestore occurence with movnti while.C614A0                                                   |
+00C61079 | 51                       | push ecx                                                                                             | ecx:EntryPoint
+00C6107A | 8B0D 6030C600            | mov ecx,dword ptr ds:[<&?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A>]                   | ecx:EntryPoint
+00C61080 | BA 3831C600              | mov edx,storestore occurence with movnti while.C63138                                                | edx:EntryPoint, C63138:"Found occurence"
+00C61085 | E8 C6010000              | call storestore occurence with movnti while.C61250                                                   |
+00C6108A | 83C4 04                  | add esp,4                                                                                            |
+00C6108D | 8BC8                     | mov ecx,eax                                                                                          | ecx:EntryPoint
+00C6108F | FF15 4030C600            | call dword ptr ds:[<&??6?$basic_ostream@GU?$char_traits@G@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z>]  |
+00C61095 | 6A 01                    | push 1                                                                                               |
+00C61097 | FF15 B030C600            | call dword ptr ds:[<&exit>]                                                                          |
+00C6109D | 33C0                     | xor eax,eax                                                                                          |
+00C6109F | 5B                       | pop ebx                                                                                              |
+00C610A0 | 83C4 0C                  | add esp,C                                                                                            |
+00C610A3 | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00C610A6 | CC                       | int3                                                                                                 |
+00C610A7 | CC                       | int3                                                                                                 |
+00C610A8 | CC                       | int3                                                                                                 |

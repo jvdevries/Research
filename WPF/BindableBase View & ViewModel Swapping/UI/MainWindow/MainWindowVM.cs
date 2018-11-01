@@ -44,10 +44,77 @@ namespace EasyFramework
         }
         private bool _InvalidatesImplicitDataTemplateResources;
 
-        public ICommand SwitchViewAndOrViewModelGoodPattern => SwitchViewAndOrViewModelCommand(true);
-        public ICommand SwitchViewAndOrViewModelBadPattern => SwitchViewAndOrViewModelCommand(false);
+        public ICommand SwitchViewAndOrViewModelGoodPattern => VVMSequenceCommand(true);
+        public ICommand SwitchViewAndOrViewModelBadPattern => VVMSequenceCommand(false);
 
-        private ICommand SwitchViewAndOrViewModelCommand(bool useBreakingPattern)
+        private void SwapView()
+        {
+            if (currentView == 0 && currentViewModel == 0)
+                ViewSwapper.Swap(ViewResources, typeof(ViewB), CurrentUserControlVM.GetType());
+            if (currentView == 0 && currentViewModel == 1)
+                ViewSwapper.Swap(ViewResources, typeof(ViewB), CurrentUserControlVM.GetType());
+            if (currentView == 1 && currentViewModel == 0)
+                ViewSwapper.Swap(ViewResources, typeof(ViewA), CurrentUserControlVM.GetType());
+            if (currentView == 1 && currentViewModel == 1)
+                ViewSwapper.Swap(ViewResources, typeof(ViewA), CurrentUserControlVM.GetType());
+
+            currentView++;
+
+            if (currentView == 2)
+                currentView = 0;
+        }
+
+        private int currentView = 0;
+        private void SetView(int to) // Should be enum
+        {
+            if (currentView == 0 && currentViewModel == 0)
+                ViewSwapper.Swap(ViewResources, typeof(ViewB), CurrentUserControlVM.GetType());
+            if (currentView == 0 && currentViewModel == 1)
+                ViewSwapper.Swap(ViewResources, typeof(ViewB), CurrentUserControlVM.GetType());
+            if (currentView == 1 && currentViewModel == 0)
+                ViewSwapper.Swap(ViewResources, typeof(ViewA), CurrentUserControlVM.GetType());
+            if (currentView == 1 && currentViewModel == 1)
+                ViewSwapper.Swap(ViewResources, typeof(ViewA), CurrentUserControlVM.GetType());
+        }
+
+        private void SetViewModel(int to, string VMString = null) // Should be enum
+        {
+            if (ForceViewRefresh)
+                CurrentUserControlVM = null;
+
+            if (VMString == null && to == 0)
+                VMString = " - SetViewModel B";
+            if (VMString == null && to == 1)
+                VMString = " - SetViewModel A";
+
+            if (to == 0)
+                CurrentUserControlVM = new ViewModelB(VMString);
+            else
+                CurrentUserControlVM = new ViewModelA(VMString);
+        }
+
+        private void SwapViewModel()
+        {
+            if (ForceViewRefresh)
+                CurrentUserControlVM = null;
+
+            if (currentViewModel == 0)
+            {
+                CurrentUserControlVM = new ViewModelB(" - S-VMB");
+                currentViewModel = 1;
+            }
+            else
+            {
+                CurrentUserControlVM = new ViewModelA(" - S-VMA");
+                currentViewModel = 0;
+            }
+        }
+
+        public ICommand SwitchView => new RelayCommand(x => SwapView());
+
+        public ICommand SwitchViewModel => new RelayCommand(x => SwapViewModel());
+
+        private ICommand VVMSequenceCommand(bool useBreakingPattern)
         {
             var CommandToExecute = 0;
             return new RelayCommand(x =>

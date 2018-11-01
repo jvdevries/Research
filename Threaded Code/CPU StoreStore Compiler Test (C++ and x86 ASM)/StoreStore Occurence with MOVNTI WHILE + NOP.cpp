@@ -31,6 +31,9 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 	    __asm mov ebx, [X];
     	__asm mov [dummyY], eax
     	__asm mov [dummyX], ebx
+    	__asm nop
+    	__asm nop
+    	__asm nop
     	
     	if (dummyX == 1)
     		return 0;

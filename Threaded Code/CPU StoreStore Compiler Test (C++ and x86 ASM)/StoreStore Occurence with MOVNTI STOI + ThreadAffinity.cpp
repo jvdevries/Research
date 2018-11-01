@@ -11,6 +11,9 @@ int X, Y = 0;
 
 DWORD WINAPI Thread1(LPVOID lpParam)
 {
+	auto mask = (static_cast<DWORD_PTR>(1) << 0);
+	auto ret = SetThreadAffinityMask(GetCurrentThread(), mask);
+
 	__asm mov eax, 1
 	__asm mov ebx, 2
 	__asm mfence
@@ -21,6 +24,9 @@ DWORD WINAPI Thread1(LPVOID lpParam)
 }
 DWORD WINAPI Thread2(LPVOID lpParam)
 {
+	auto mask = (static_cast<DWORD_PTR>(1) << 1);
+	auto ret = SetThreadAffinityMask(GetCurrentThread(), mask);
+
 	while (true)
 	{
 		int dummyY = 0;
@@ -46,7 +52,7 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 
 int main(int argc, char* argv[]) 
 {
-	int dummy = 1000;
+	int dummy = stoi("1000");
 	int maxRuns = 1000;
 	cout << "Doing " << maxRuns << " runs" <<endl;
 	for (int i = 0; i < maxRuns; i++)

@@ -31,6 +31,9 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 	    __asm mov ebx, [X];
     	__asm mov [dummyY], eax
     	__asm mov [dummyX], ebx
+    	__asm nop
+    	__asm nop
+    	__asm nop
     	
     	if (dummyX == 1)
     		return 0;
@@ -46,7 +49,7 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 
 int main(int argc, char* argv[]) 
 {
-	int dummy = 1000;
+	int dummy = stoi("1000");
 	int maxRuns = 1000;
 	cout << "Doing " << maxRuns << " runs" <<endl;
 	for (int i = 0; i < maxRuns; i++)

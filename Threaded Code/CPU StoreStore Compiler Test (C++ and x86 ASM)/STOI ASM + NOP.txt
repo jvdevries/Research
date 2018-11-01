@@ -1,0 +1,62 @@
+00F31000 | 53                       | push ebx                                                                                             |
+00F31001 | B8 01000000              | mov eax,1                                                                                            |
+00F31006 | BB 02000000              | mov ebx,2                                                                                            |
+00F3100B | 0FAEF0                   | mfence                                                                                               |
+00F3100E | 0FC305 F453F300          | movnti dword ptr ds:[F353F4],eax                                                                     |
+00F31015 | 891D F853F300            | mov dword ptr ds:[F353F8],ebx                                                                        |
+00F3101B | 33C0                     | xor eax,eax                                                                                          |
+00F3101D | 5B                       | pop ebx                                                                                              |
+00F3101E | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F31021 | CC                       | int3                                                                                                 |
+00F31022 | CC                       | int3                                                                                                 |
+00F31023 | CC                       | int3                                                                                                 |
+00F31024 | CC                       | int3                                                                                                 |
+00F31025 | CC                       | int3                                                                                                 |
+00F31026 | CC                       | int3                                                                                                 |
+00F31027 | CC                       | int3                                                                                                 |
+00F31028 | CC                       | int3                                                                                                 |
+00F31029 | CC                       | int3                                                                                                 |
+00F3102A | CC                       | int3                                                                                                 |
+00F3102B | CC                       | int3                                                                                                 |
+00F3102C | CC                       | int3                                                                                                 |
+00F3102D | CC                       | int3                                                                                                 |
+00F3102E | CC                       | int3                                                                                                 |
+00F3102F | CC                       | int3                                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F31030 | 83EC 08                  | sub esp,8                                                                                            |
+00F31033 | 53                       | push ebx                                                                                             |
+00F31034 | 0F1F40 00                | nop dword ptr ds:[eax],eax                                                                           |
+00F31038 | 0F1F8400 00000000        | nop dword ptr ds:[eax+eax],eax                                                                       |
+
+00F31040 | C74424 08 00000000       | mov dword ptr ss:[esp+8],0                                                                           |
+00F31048 | C74424 04 00000000       | mov dword ptr ss:[esp+4],0                                                                           |
+00F31050 | A1 F853F300              | mov eax,dword ptr ds:[F353F8]                                                                        |
+00F31055 | 0FAEF0                   | mfence                                                                                               |
+00F31058 | 8B1D F453F300            | mov ebx,dword ptr ds:[F353F4]                                                                        |
+00F3105E | 894424 08                | mov dword ptr ss:[esp+8],eax                                                                         |
+00F31062 | 895C24 04                | mov dword ptr ss:[esp+4],ebx                                                                         |
+00F31066 | 90                       | nop                                                                                                  |
+00F31067 | 90                       | nop                                                                                                  |
+00F31068 | 90                       | nop                                                                                                  |
+00F31069 | 837C24 04 01             | cmp dword ptr ss:[esp+4],1                                                                           |
+00F3106E | 74 2C                    | je storestore occurence with movnti stoi + nop.F3109C                                                |
+00F31070 | 837C24 08 02             | cmp dword ptr ss:[esp+8],2                                                                           |
+00F31075 | 75 C9                    | jne storestore occurence with movnti stoi + nop.F31040                                               |
+
+00F31077 | 8B0D 5430F300            | mov ecx,dword ptr ds:[<&?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A>]                   | ecx:EntryPoint
+00F3107D | BA 1432F300              | mov edx,storestore occurence with movnti stoi + nop.F33214                                           | edx:EntryPoint, F33214:"Found occurence"
+00F31082 | 68 E016F300              | push storestore occurence with movnti stoi + nop.F316E0                                              |
+00F31087 | E8 04040000              | call storestore occurence with movnti stoi + nop.F31490                                              |
+00F3108C | 8BC8                     | mov ecx,eax                                                                                          | ecx:EntryPoint
+00F3108E | FF15 4830F300            | call dword ptr ds:[<&??6?$basic_ostream@GU?$char_traits@G@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z>]  |
+00F31094 | 6A 01                    | push 1                                                                                               |
+00F31096 | FF15 E830F300            | call dword ptr ds:[<&exit>]                                                                          |
+00F3109C | 33C0                     | xor eax,eax                                                                                          |
+00F3109E | 5B                       | pop ebx                                                                                              |
+00F3109F | 83C4 08                  | add esp,8                                                                                            |
+00F310A2 | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F310A5 | CC                       | int3                                                                                                 |
+00F310A6 | CC                       | int3                                                                                                 |
+00F310A7 | CC                       | int3                                                                                                 |

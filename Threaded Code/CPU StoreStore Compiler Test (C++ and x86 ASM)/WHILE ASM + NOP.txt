@@ -1,0 +1,64 @@
+00F81000 | 53                       | push ebx                                                                                             |
+00F81001 | B8 01000000              | mov eax,1                                                                                            |
+00F81006 | BB 02000000              | mov ebx,2                                                                                            |
+00F8100B | 0FAEF0                   | mfence                                                                                               |
+00F8100E | 0FC305 7C43F800          | movnti dword ptr ds:[F8437C],eax                                                                     |
+00F81015 | 891D 8043F800            | mov dword ptr ds:[F84380],ebx                                                                        |
+00F8101B | 33C0                     | xor eax,eax                                                                                          |
+00F8101D | 5B                       | pop ebx                                                                                              |
+00F8101E | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F81021 | CC                       | int3                                                                                                 |
+00F81022 | CC                       | int3                                                                                                 |
+00F81023 | CC                       | int3                                                                                                 |
+00F81024 | CC                       | int3                                                                                                 |
+00F81025 | CC                       | int3                                                                                                 |
+00F81026 | CC                       | int3                                                                                                 |
+00F81027 | CC                       | int3                                                                                                 |
+00F81028 | CC                       | int3                                                                                                 |
+00F81029 | CC                       | int3                                                                                                 |
+00F8102A | CC                       | int3                                                                                                 |
+00F8102B | CC                       | int3                                                                                                 |
+00F8102C | CC                       | int3                                                                                                 |
+00F8102D | CC                       | int3                                                                                                 |
+00F8102E | CC                       | int3                                                                                                 |
+00F8102F | CC                       | int3                                                                                                 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F81030 | 83EC 0C                  | sub esp,C                                                                                            |
+00F81033 | 53                       | push ebx                                                                                             |
+00F81034 | 0F1F40 00                | nop dword ptr ds:[eax],eax                                                                           |
+00F81038 | 0F1F8400 00000000        | nop dword ptr ds:[eax+eax],eax                                                                       |
+
+00F81040 | C74424 0C 00000000       | mov dword ptr ss:[esp+C],0                                                                           |
+00F81048 | C74424 08 00000000       | mov dword ptr ss:[esp+8],0                                                                           |
+00F81050 | A1 8043F800              | mov eax,dword ptr ds:[F84380]                                                                        |
+00F81055 | 0FAEF0                   | mfence                                                                                               |
+00F81058 | 8B1D 7C43F800            | mov ebx,dword ptr ds:[F8437C]                                                                        |
+00F8105E | 894424 0C                | mov dword ptr ss:[esp+C],eax                                                                         |
+00F81062 | 895C24 08                | mov dword ptr ss:[esp+8],ebx                                                                         |
+00F81066 | 90                       | nop                                                                                                  |
+00F81067 | 90                       | nop                                                                                                  |
+00F81068 | 90                       | nop                                                                                                  |
+00F81069 | 837C24 08 01             | cmp dword ptr ss:[esp+8],1                                                                           |
+00F8106E | 74 30                    | je storestore occurence with movnti while + nop.F810A0                                               |
+00F81070 | 837C24 0C 02             | cmp dword ptr ss:[esp+C],2                                                                           |
+00F81075 | 75 C9                    | jne storestore occurence with movnti while + nop.F81040                                              |
+
+00F81077 | 68 A014F800              | push storestore occurence with movnti while + nop.F814A0                                             |
+00F8107C | 51                       | push ecx                                                                                             | ecx:EntryPoint
+00F8107D | 8B0D 6030F800            | mov ecx,dword ptr ds:[<&?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A>]                   | ecx:EntryPoint
+00F81083 | BA 3831F800              | mov edx,storestore occurence with movnti while + nop.F83138                                          | edx:EntryPoint, F83138:"Found occurence"
+00F81088 | E8 C3010000              | call storestore occurence with movnti while + nop.F81250                                             |
+00F8108D | 83C4 04                  | add esp,4                                                                                            |
+00F81090 | 8BC8                     | mov ecx,eax                                                                                          | ecx:EntryPoint
+00F81092 | FF15 4030F800            | call dword ptr ds:[<&??6?$basic_ostream@GU?$char_traits@G@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z>]  |
+00F81098 | 6A 01                    | push 1                                                                                               |
+00F8109A | FF15 B030F800            | call dword ptr ds:[<&exit>]                                                                          |
+00F810A0 | 33C0                     | xor eax,eax                                                                                          |
+00F810A2 | 5B                       | pop ebx                                                                                              |
+00F810A3 | 83C4 0C                  | add esp,C                                                                                            |
+00F810A6 | C2 0400                  | ret 4                                                                                                |
+--------------------------------------------------------------------------------------------------------------------------------------------
+00F810A9 | CC                       | int3                                                                                                 |
+00F810AA | CC                       | int3                                                                                                 |
+00F810AB | CC                       | int3                                                                                                 |
