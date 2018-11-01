@@ -2,6 +2,10 @@
 prompt $G
 @echo on
 
+@echo|set /p="This shows the only difference in the C++ files."
+"fc" "StoreStore Occurence with MOVNTI STOI.cpp" "StoreStore Occurence with MOVNTI WHILE.cpp"
+@echo.
+
 @echo|set /p="This should report a find, but it won't."
 "StoreStore Occurence with MOVNTI STOI.exe"
 @echo.

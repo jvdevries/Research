@@ -1,0 +1,12 @@
+00AB1000 | 53                       | push ebx                                     |
+00AB1001 | B8 01000000              | mov eax,1                                    |
+00AB1006 | BB 02000000              | mov ebx,2                                    |
+00AB100B | 0FAEF0                   | mfence                                       |
+00AB100E | 0FC305 7C43AB00          | movnti dword ptr ds:[AB437C],eax             | movnti [X], eax
+00AB1015 | 891D 8043AB00            | mov dword ptr ds:[AB4380],ebx                | mov [Y], ebx
+00AB101B | 33C0                     | xor eax,eax                                  |
+00AB101D | 5B                       | pop ebx                                      |
+00AB101E | C2 0400                  | ret 4                                        |
+00AB1021 | CC                       | int3                                         |
+00AB1022 | CC                       | int3                                         |
+00AB1023 | CC                       | int3                                         |

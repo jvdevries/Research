@@ -1,0 +1,51 @@
+000D1000 | 53                       | push ebx                                     |
+000D1001 | 6A 01                    | push 1                                       |
+000D1003 | FF15 08300D00            | call dword ptr ds:[<&GetCurrentThread>]      |
+000D1009 | 50                       | push eax                                     |
+000D100A | FF15 00300D00            | call dword ptr ds:[<&SetThreadAffinityMask>] |
+
+000D1010 | B8 01000000              | mov eax,1                                    |
+000D1015 | BB 02000000              | mov ebx,2                                    |
+000D101A | 0FAEF0                   | mfence                                       |
+000D101D | 0FC305 F4530D00          | movnti dword ptr ds:[D53F4],eax              |
+000D1024 | 891D F8530D00            | mov dword ptr ds:[D53F8],ebx                 |
+000D102A | 33C0                     | xor eax,eax                                  |
+000D102C | 5B                       | pop ebx                                      |
+000D102D | C2 0400                  | ret 4                                        |
+
+000D1030 | 83EC 08                  | sub esp,8                                    |
+000D1033 | 6A 02                    | push 2                                       |
+000D1035 | FF15 08300D00            | call dword ptr ds:[<&GetCurrentThread>]      |
+000D103B | 50                       | push eax                                     |
+000D103C | FF15 00300D00            | call dword ptr ds:[<&SetThreadAffinityMask>] |
+000D1042 | 53                       | push ebx                                     |
+000D1043 | 0F1F40 00                | nop dword ptr ds:[eax],eax                   |
+000D1047 | 66:0F1F8400 00000000     | nop word ptr ds:[eax+eax],ax                 |
+
+000D1050 | C74424 08 00000000       | mov dword ptr ss:[esp+8],0                   |
+000D1058 | C74424 04 00000000       | mov dword ptr ss:[esp+4],0                   |
+000D1060 | A1 F8530D00              | mov eax,dword ptr ds:[D53F8]                 |
+000D1065 | 0FAEF0                   | mfence                                       |
+000D1068 | 8B1D F4530D00            | mov ebx,dword ptr ds:[D53F4]                 |
+000D106E | 894424 08                | mov dword ptr ss:[esp+8],eax                 |
+000D1072 | 895C24 04                | mov dword ptr ss:[esp+4],ebx                 |
+000D1076 | 837C24 04 01             | cmp dword ptr ss:[esp+4],1                   |
+000D107B | 74 2C                    | je stoi for dbg.D10A9                        |
+000D107D | 837C24 08 02             | cmp dword ptr ss:[esp+8],2                   |
+000D1082 | 75 CC                    | jne stoi for dbg.D1050                       |
+
+000D1084 | 8B0D 5C300D00            | mov ecx,dword ptr ds:[<&?cout@std@@3V?$basic |
+000D108A | BA 14320D00              | mov edx,stoi for dbg.D3214                   | D3214:"Found occurence"
+000D108F | 68 D0160D00              | push stoi for dbg.D16D0                      |
+000D1094 | E8 E7030000              | call stoi for dbg.D1480                      |
+000D1099 | 8BC8                     | mov ecx,eax                                  |
+000D109B | FF15 50300D00            | call dword ptr ds:[<&??6?$basic_ostream@GU?$ |
+000D10A1 | 6A 01                    | push 1                                       |
+000D10A3 | FF15 F0300D00            | call dword ptr ds:[<&exit>]                  |
+000D10A9 | 33C0                     | xor eax,eax                                  |
+000D10AB | 5B                       | pop ebx                                      |
+000D10AC | 83C4 08                  | add esp,8                                    |
+000D10AF | C2 0400                  | ret 4                                        |
+000D10B2 | CC                       | int3                                         |
+000D10B3 | CC                       | int3                                         |
+000D10B4 | CC                       | int3                                         |
