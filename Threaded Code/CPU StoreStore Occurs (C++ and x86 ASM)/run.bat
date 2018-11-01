@@ -12,6 +12,10 @@ prompt $G
 "StoreStore Occurence with MOVNTI.exe" %runs% %printPer%
 @echo.
 
+@echo|set /p="This should not find anything (but the test is too short to consider anything)."
+"StoreStore NonOccurence with MOVNTI + SFENCE.exe" %runs% %printPer%
+@echo.
+
 @echo off
 prompt
 set /p input="Press enter to exit..."
