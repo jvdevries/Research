@@ -26,25 +26,19 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 		int dummyY = 0;
 		int dummyX = 0;
 		
-    	// For making clear the read isn't the 
-    	// problem: excessive usage of mfence.
-    	__asm mfence
 	    __asm mov eax, [Y];
-    	__asm mfence
+    	__asm mfence // Ensure that Y is read before X
 	    __asm mov ebx, [X];
-    	__asm mfence
     	__asm mov [dummyY], eax
-    	__asm mfence
     	__asm mov [dummyX], ebx
-    	__asm mfence
     	
-		if (dummyX == 0 && dummyY == 2)
+    	if (dummyX == 1)
+    		return 0;
+    	if (dummyY == 2)
     	{
 			cout << "Found occurence" << endl;
 			exit(1);
     	}
-    	if (dummyX == 1 && dummyY == 2)
-    		return 0;
 	}
 	
 	return 0;
