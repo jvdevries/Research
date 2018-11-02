@@ -1,0 +1,39 @@
+### The FAST/SLOW difference is only insignificant lines ###
+Comparing files ConsoleFast.cs and CONSOLESLOW.CS
+***** ConsoleFast.cs
+            Console.WriteLine("Time " + (ElapsedMsec));
+            Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+***** CONSOLESLOW.CS
+            Console.WriteLine("Time " + (ElapsedMsec));
+            //Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+*****
+
+
+### The time used for executing each EXE is the same according to batch ###
+Console-Fast Time Taken : 00:00:26,69
+Console-Slow Time Taken : 00:00:15,01
+File-Fast Time Taken : 00:00:00,01
+File-Slow Time Taken : 00:00:00,03
+File-Fast Time Taken : 00:00:00,02
+File-Slow Time Taken : 00:00:00,02
+
+### Although SUM results are the same, the stopwatch ticks is not (yet freq is) ###
+----- console-fast.txt -----
+Ticks 79927998
+Time 22329.0943402025
+Stopwatch/QPC is bad!!!
+
+----- console-slow.txt -----
+Ticks 38183186
+Time 10667.0501418476
+
+----- file-fast.txt -----
+
+----- file-slow.txt -----
+
+----- file-fastQPC.txt -----
+
+----- file-slowQPC.txt -----
+

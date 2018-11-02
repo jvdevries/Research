@@ -1,0 +1,3 @@
+Ticks 82452798
+Time 23034.4353821505
+Stopwatch/QPC is bad!!!
