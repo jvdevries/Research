@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,30 +11,31 @@ using static System.String;
 
 namespace EasyFramework
 {
-    /// <summary>
-    /// ViewSwapper (re)binds a View to a ViewModel through the DataTemplate part of ViewModel first XAML code.
-    /// </summary>
-    public static class ViewSwapper
+    public static class ViewBinder
     {
-        public static void Swap(ResourceDictionary D, Type V, Type VM)
+        public static void BindView(ResourceDictionary D, Type V, Type VM)
         {
             Debug.Assert(D != null);
             Debug.Assert(V != null);
             Debug.Assert(VM != null);
 
             var DT = CreateTemplate(V, VM);
-
+            
             Debug.Assert(DT != null);
+            Debug.Assert(DT.DataTemplateKey != null);
 
-            if (D.Contains(DT.DataTemplateKey ?? throw new InvalidOperationException()))
-                // Cannot add an existing key.
-                D.Remove(DT.DataTemplateKey);
+            // This is a quick & fast hack! This works because there is only one entry.
+            // A production ViewBinder requires a target to only remove relevant entries.
+            D.Clear();
 
             D.Add(DT.DataTemplateKey, DT);
         }
 
         private static DataTemplate CreateTemplate(Type VType, Type VMType)
         {
+            Debug.Assert(VType.Namespace != null);
+            Debug.Assert(VMType.Namespace != null);
+
             const string xamlTemplate = "<DataTemplate DataType=\"{{x:Type vm:{0}}}\"><v:{1} /></DataTemplate>";
             var xaml = Format(xamlTemplate, VMType.Name, VType.Name);
 

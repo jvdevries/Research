@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="EasyFramework.ViewA"
+﻿<local:ViewBase x:Class="EasyFramework.View2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EasyFramework"
              mc:Ignorable="d"
-            d:DataContext="{d:DesignInstance local:ViewModelA, IsDesignTimeCreatable=false}">
-    <StackPanel Background="LightBlue">
-        <Label Content="{Binding text}" ContentStringFormat="View 1 ⥃ {0}"/>
+            d:DataContext="{d:DesignInstance local:ViewModelB, IsDesignTimeCreatable=false}">
+    <StackPanel Background="LightYellow">
+        <Label Content="{Binding Text}" ContentStringFormat="View 2 ⥃ {0}"/>
     </StackPanel>
-</UserControl>
+</local:ViewBase>

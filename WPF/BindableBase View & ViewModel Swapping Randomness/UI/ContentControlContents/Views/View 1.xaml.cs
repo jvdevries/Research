@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EasyFramework
 {
     /// <summary>
-    /// Interaction logic for UserControl2.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class ViewB : UserControl
+    public partial class View1 : ViewBase
     {
-        public ViewB()
+        public View1()
         {
             InitializeComponent();
         }

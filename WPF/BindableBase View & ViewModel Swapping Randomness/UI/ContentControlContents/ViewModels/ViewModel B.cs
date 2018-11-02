@@ -8,14 +8,13 @@ using MVVM_Util;
 
 namespace EasyFramework
 {
-    public class ViewModelA : BindableBase
+    public class ViewModelB : BindableBase
     {
-        public ViewModelA(string suffix)
+        public ViewModelB(string suffix)
         {
-            _text = _text + suffix;
+            Text = Text + Environment.NewLine + suffix;
         }
 
-        public string text => _text;
-        private string _text = "ViewModel A";
+        public string Text { get; } = "VM B";
     }
 }

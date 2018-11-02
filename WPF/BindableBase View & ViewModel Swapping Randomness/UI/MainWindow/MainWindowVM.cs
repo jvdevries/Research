@@ -14,35 +14,35 @@ namespace EasyFramework
 
         public MainWindowVM()
         {
-            _forceViewRefresh = false;
-            _invalidatesImplicitDataTemplateResources = false;
-            _selectedViewModel = new ViewModelA(" Init");
+            _ForceViewRefresh = false;
+            _InvalidatesImplicitDataTemplateResources = false;
+            _CurrentUserControlVM = new ViewModelA(" Init");
         }
 
-        public ViewModelBase SelectedViewModel
+        public BindableBase CurrentUserControlVM
         {
-            get => _selectedViewModel;
-            set => SetProperty(ref _selectedViewModel, value);
+            get => _CurrentUserControlVM;
+            set => SetProperty(ref _CurrentUserControlVM, value);
         }
-        private ViewModelBase _selectedViewModel;
+        private BindableBase _CurrentUserControlVM;
 
         public bool ForceViewRefresh
         {
-            get => _forceViewRefresh;
-            set => SetProperty(ref _forceViewRefresh, value);
+            get => _ForceViewRefresh;
+            set => SetProperty(ref _ForceViewRefresh, value);
         }
-        private bool _forceViewRefresh;
+        private bool _ForceViewRefresh;
 
         public bool InvalidatesImplicitDataTemplateResources
         {
-            get => _invalidatesImplicitDataTemplateResources;
+            get => _InvalidatesImplicitDataTemplateResources;
             set
             {
-                SetProperty(ref _invalidatesImplicitDataTemplateResources, value);
-                ViewResources.InvalidatesImplicitDataTemplateResources = _invalidatesImplicitDataTemplateResources;
+                SetProperty(ref _InvalidatesImplicitDataTemplateResources, value);
+                ViewResources.InvalidatesImplicitDataTemplateResources = _InvalidatesImplicitDataTemplateResources;
             }
         }
-        private bool _invalidatesImplicitDataTemplateResources;
+        private bool _InvalidatesImplicitDataTemplateResources;
 
         public ICommand SwitchViewAndOrViewModelGoodPattern => VVMSequenceCommand(true);
         public ICommand SwitchViewAndOrViewModelBadPattern => VVMSequenceCommand(false);
@@ -57,16 +57,16 @@ namespace EasyFramework
 
         private void SwapViewModel()
         {
-            if (SelectedViewModel.GetType() == typeof(ViewModelA))
+            if (CurrentUserControlVM.GetType() == typeof(ViewModelA))
                 SetViewModel(typeof(ViewModelB), " - A -> B");
-            else if (SelectedViewModel.GetType() == typeof(ViewModelB))
+            else if (CurrentUserControlVM.GetType() == typeof(ViewModelB))
                 SetViewModel(typeof(ViewModelA), " - B -> A");
         }
 
         private void SwapViewAndSetViewModel()
         {
             SwapView();
-            SetViewModel(SelectedViewModel.GetType());
+            SetViewModel(CurrentUserControlVM.GetType());
         }
 
 
@@ -82,12 +82,12 @@ namespace EasyFramework
         {
             if (VType == typeof(View1))
             {
-                ViewBinder.BindView(ViewResources, typeof(View1), typeof(ViewModelBase));
+                ViewBinder.BindView(ViewResources, typeof(View1), CurrentUserControlVM.GetType());
                 _currentView = typeof(View1);
             }
             else if (VType == typeof(View2))
             {
-                ViewBinder.BindView(ViewResources, typeof(View2), typeof(ViewModelBase));
+                ViewBinder.BindView(ViewResources, typeof(View2), CurrentUserControlVM.GetType());
                 _currentView = typeof(View2);
             }
         }
@@ -95,15 +95,15 @@ namespace EasyFramework
         private void SetViewModel(Type VMType, string VMString = null)
         {
             if (ForceViewRefresh)
-                SelectedViewModel = null;
+                CurrentUserControlVM = null;
 
             if (VMString == null && VMType == typeof(ViewModelA))
                 VMString = " - Set B: " + DateTime.Now.Ticks;
             if (VMString == null && VMType == typeof(ViewModelB))
                 VMString = " - Set A: " + DateTime.Now.Ticks;
 
-            if (VMType == typeof(ViewModelA)) SelectedViewModel = new ViewModelA(VMString);
-            if (VMType == typeof(ViewModelB)) SelectedViewModel = new ViewModelB(VMString);
+            if (VMType == typeof(ViewModelA)) CurrentUserControlVM = new ViewModelA(VMString);
+            if (VMType == typeof(ViewModelB)) CurrentUserControlVM = new ViewModelB(VMString);
         }
 
 

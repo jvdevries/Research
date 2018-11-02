@@ -1,0 +1,1 @@
+All tests were done on a 3570K.

@@ -66,7 +66,6 @@
     <Compile Include="External Library\MVVM Library\BindableBase.cs" />
     <Compile Include="External Library\MVVM Library\RelayCommand.cs" />
     <Compile Include="Internal Library\ViewBinder.cs" />
-    <Compile Include="UI\ContentControlContents\ViewModelBase.cs" />
     <Compile Include="UI\ContentControlContents\ViewBase.cs" />
     <Compile Include="UI\ContentControlContents\ViewModels\ViewModel A.cs" />
     <Compile Include="UI\ContentControlContents\ViewModels\ViewModel B.cs" />

@@ -18,9 +18,9 @@ namespace EasyFramework
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class View1 : ViewBase
     {
-        public ViewA()
+        public View1()
         {
             InitializeComponent();
         }

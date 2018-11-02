@@ -8,8 +8,8 @@
         Title="MainWindow" Height="350" Width="400"
         d:DataContext="{d:DesignInstance local:MainWindowVM, IsDesignTimeCreatable=True}">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:ViewModelBase}">
-            <local:View1/>
+        <DataTemplate DataType="{x:Type local:ViewModelA}">
+            <local:View1 />
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -25,15 +25,15 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
-                <Label Content="InvalidatesImplicitDataTemplateResources"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <CheckBox IsChecked="{Binding ForceViewRefresh}" VerticalAlignment="Center"/>
                 <Label Content="Nullify ContentControl Property before setting to new ViewModel"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <CheckBox IsChecked="{Binding InvalidatesImplicitDataTemplateResources}" VerticalAlignment="Center"/>
+                <Label Content="InvalidatesImplicitDataTemplateResources"/>
+            </StackPanel>
         </StackPanel>
-        <ContentControl Grid.Row="3" Grid.Column="0" Content="{Binding SelectedViewModel}"/>
+        <ContentControl Grid.Row="3" Grid.Column="0" Content="{Binding CurrentUserControlVM, Mode=TwoWay}"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}">
