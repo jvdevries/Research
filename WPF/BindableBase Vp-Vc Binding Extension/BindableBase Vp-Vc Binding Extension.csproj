@@ -63,6 +63,7 @@
     <Compile Include="UI\ColorPicker\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\ColorPicker\ColorPickerVM2.cs" />
     <Compile Include="UI\ColorPicker\IColorPickerVM.cs" />
     <Compile Include="UI\ColorPicker\ColorPickerVM.cs" />
     <Compile Include="Models\SelectedColorsHistoryModel.cs" />
