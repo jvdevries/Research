@@ -27,6 +27,7 @@ namespace StopwatchInconsistentResults
 
             output.AppendLine("Sum " + sum);
             output.AppendLine("Ticks " + (stop - start));
+            output.AppendLine("Ticks " + (ElapsedTicks));
             output.AppendLine("Stopwatch/QPC is bad!!!"); // speed toogle
             File.WriteAllText(@"file.txt", output.ToString());
         }

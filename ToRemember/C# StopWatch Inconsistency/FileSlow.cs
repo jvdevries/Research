@@ -20,6 +20,7 @@ namespace StopwatchInconsistentResults
 
             output.AppendLine("Sum " + sum);
             output.AppendLine("Ticks " + (stop - start));
+            output.AppendLine("Ticks " + (ElapsedTicks));
 
             File.WriteAllText(@"file.txt", output.ToString());
         }

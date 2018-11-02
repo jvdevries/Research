@@ -1,0 +1,97 @@
+### The FAST/SLOW difference is only insignificant lines ###
+Comparing files ConsoleFast.cs and CONSOLESLOW.CS
+***** ConsoleFast.cs
+            Console.WriteLine("Time " + (ElapsedMsec));
+            Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+***** CONSOLESLOW.CS
+            Console.WriteLine("Time " + (ElapsedMsec));
+            //Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+*****
+
+Comparing files ConsoleA.cs and CONSOLEB.CS
+***** ConsoleA.cs
+            Console.WriteLine("Time " + (ElapsedMsec));
+            Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+***** CONSOLEB.CS
+            Console.WriteLine("Time " + (ElapsedMsec));
+            //Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+        }
+*****
+
+Comparing files FileFast.cs and FILESLOW.CS
+***** FileFast.cs
+            output.AppendLine("Ticks " + (ElapsedTicks));
+            output.AppendLine("Stopwatch/QPC is bad!!!"); // speed toogle
+            File.WriteAllText(@"file.txt", output.ToString());
+***** FILESLOW.CS
+            output.AppendLine("Ticks " + (ElapsedTicks));
+
+            File.WriteAllText(@"file.txt", output.ToString());
+*****
+
+Comparing files FileFastQPC.cs and FILESLOWQPC.CS
+***** FileFastQPC.cs
+            output.AppendLine("Ticks " + (ElapsedTicks));
+            output.AppendLine("Stopwatch/QPC is bad!!!"); // speed toogle
+            File.WriteAllText(@"file.txt", output.ToString());
+***** FILESLOWQPC.CS
+            output.AppendLine("Ticks " + (ElapsedTicks));
+
+            File.WriteAllText(@"file.txt", output.ToString());
+*****
+
+
+### The time used for executing each EXE is the same according to batch ###
+Console-A Time Taken : 00:00:13,78
+Console-B Time Taken : 00:00:09,08
+Console-Fast Time Taken : 00:00:26,84
+Console-Slow Time Taken : 00:00:15,00
+File-Fast Time Taken : 00:00:04,56
+File-Slow Time Taken : 00:00:04,47
+File-FastQPC Time Taken : 00:00:05,08
+File-SlowQPC Time Taken : 00:00:04,86
+
+### Although SUM results are the same, the stopwatch ticks is not (yet freq is) ###
+----- console-fast.txt -----
+Ticks 80541374
+Time 22500.4501968826
+Stopwatch/QPC is bad!!!
+
+----- console-slow.txt -----
+Ticks 38156942
+Time 10659.7184837738
+
+----- consoleA.txt -----
+Sum 1333333320
+Time 9056.72229291712
+Stopwatch/QPC is bad!!!
+
+----- consoleB.txt -----
+Sum 1333333320
+Time 4290.2458273328
+
+----- file-fast.txt -----
+Sum 33333333
+Ticks 748626
+Ticks 748626
+Stopwatch/QPC is bad!!!
+
+----- file-slow.txt -----
+Sum 33333333
+Ticks 392033
+Ticks 392033
+
+----- file-fastQPC.txt -----
+Sum 33333333
+Ticks 830667
+Ticks 830667
+Stopwatch/QPC is bad!!!
+
+----- file-slowQPC.txt -----
+Sum 33333333
+Ticks 384120
+Ticks 384120
+

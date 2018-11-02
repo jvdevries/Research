@@ -5,10 +5,15 @@ namespace StopwatchInconsistentResults
 {
     class StopwatchInconsistentResults
     {
-        static void Main()
+        static void Main(string[] args)
         {
+ 			Process Proc = Process.GetCurrentProcess();
+  			long AffinityMask = (long)Proc.ProcessorAffinity;
+  			AffinityMask &= 0x0001;
+  			Proc.ProcessorAffinity = (IntPtr)AffinityMask;
+
            	var stopwatch = new Stopwatch();
-            Object[] TestArray = MakeTestArray(100000000);
+            Object[] TestArray = MakeTestArray(int.Parse(args[1]));
 
             double freq = Stopwatch.Frequency;
             
@@ -18,7 +23,7 @@ namespace StopwatchInconsistentResults
 			long startB = DateTime.Now.Ticks;
 
 			long sum = 0;			
-			for (int i = 0; i < 99; i++)
+			for (int i = 0; i < int.Parse(args[0]); i++)
 	            sum = sum + CastAndCalculateSum(TestArray);
 
             stopwatch.Stop();
@@ -30,11 +35,11 @@ namespace StopwatchInconsistentResults
             long ElapsedTicks = stop - start;
             double ElapsedMsec = ElapsedTicks * (1000.0 / freq);
 
-            //Console.WriteLine("Sum " + sum);
+            Console.WriteLine("Sum " + sum);
             //Console.WriteLine("Freq " + freq);
-            Console.WriteLine("Ticks " + (stop - start));
+            //Console.WriteLine("Ticks " + (stop - start));
             Console.WriteLine("Time " + (ElapsedMsec));
-            //Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
+            Console.WriteLine("Stopwatch/QPC is bad!!!"); // speed toogle
         }
 
         static Object[] MakeTestArray(int arrSize)

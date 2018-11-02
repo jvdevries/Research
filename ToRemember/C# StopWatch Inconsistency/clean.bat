@@ -5,3 +5,5 @@ del file-fast.txt
 del file-slow.txt
 del console-fast.txt
 del console-slow.txt
+del consoleA.txt
+del consoleB.txt

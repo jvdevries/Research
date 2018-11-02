@@ -1,5 +1,5 @@
 @echo off
-for /l %%x in (1, 1, 9) do (call :MAKESUMMARY > summary%%x.txt)
+for /l %%x in (1, 1, 5) do (call :MAKESUMMARY > summary%%x.txt)
 goto DONE
 
 : MAKESUMMARY
@@ -8,8 +8,10 @@ call :PRINT_PROOF_FILE_DIFFERENCES
 echo.
 
 echo ### The time used for executing each EXE is the same according to batch ###
-call :PROCESSCALL "ConsoleFast.exe > console-fast.txt" "Console-Fast"
-call :PROCESSCALL "ConsoleSlow.exe > console-slow.txt" "Console-Slow"
+call :PROCESSCALL "ConsoleA.exe 40 100000000 > consoleA.txt" "Console-A"
+call :PROCESSCALL "ConsoleB.exe 40 100000000 > consoleB.txt" "Console-B"
+call :PROCESSCALL "ConsoleFast.exe 40 100000000 > console-fast.txt" "Console-Fast"
+call :PROCESSCALL "ConsoleSlow.exe 40 100000000 > console-slow.txt" "Console-Slow"
 del file-fast.txt
 call :PROCESSCALL "FileFast.exe" "File-Fast"
 ren file.txt file-fast.txt
@@ -17,16 +19,18 @@ del file-slow.txt
 call :PROCESSCALL "FileSlow.exe" "File-Slow"
 ren file.txt file-slow.txt
 del file-fastQPC.txt
-call :PROCESSCALL "FileFastQPC.exe" "File-Fast"
+call :PROCESSCALL "FileFastQPC.exe" "File-FastQPC"
 ren file.txt file-fastQPC.txt
 del file-slowQPC.txt
-call :PROCESSCALL "FileSlowQPC.exe" "File-Slow"
+call :PROCESSCALL "FileSlowQPC.exe" "File-SlowQPC"
 ren file.txt file-slowQPC.txt
 echo.
 
 echo ### Although SUM results are the same, the stopwatch ticks is not (yet freq is) ###
 call :PRINTRESULT "console-fast.txt"
 call :PRINTRESULT "console-slow.txt"
+call :PRINTRESULT "consoleA.txt"
+call :PRINTRESULT "consoleB.txt"
 call :PRINTRESULT "file-fast.txt"
 call :PRINTRESULT "file-slow.txt"
 call :PRINTRESULT "file-fastQPC.txt"
@@ -35,6 +39,7 @@ goto DONE
 
 :PRINT_PROOF_FILE_DIFFERENCES
 fc ConsoleFast.cs ConsoleSlow.cs
+fc ConsoleA.cs ConsoleB.cs
 fc FileFast.cs FileSlow.cs
 fc FileFastQPC.cs FileSlowQPC.cs
 goto DONE
