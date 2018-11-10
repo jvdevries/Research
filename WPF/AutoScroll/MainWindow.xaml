@@ -1,0 +1,101 @@
+﻿<Window 
+        x:Class="CollectionManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+        Title="MainWindow"
+        ResizeMode="CanResize"
+        WindowStyle="SingleBorderWindow"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
+        Height="400"
+        Width="400"
+        TextOptions.TextFormattingMode="Ideal"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        >
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="MarqueeTextInfo">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="IsEnabled" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <ScrollViewer Name="PART_ContentHost"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <RadialGradientBrush x:Key="InfoBorder" SpreadMethod="Reflect">
+            <GradientStop Color="#CCCCCC" Offset="0"/>
+            <GradientStop Color="#333333" Offset="1"/>
+        </RadialGradientBrush>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Name="AnimatedWindowGrid">
+            <Grid Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="25*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="1" Grid.Row="1" BorderThickness="2" CornerRadius="16" BorderBrush="{DynamicResource InfoBorder}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Canvas Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" ClipToBounds="True" Margin="0,0,0,0">
+                            <TextBox Text="English has a word called pneumonoultramicroscopicsilicovolcanoconiosis!"
+                                     Style="{DynamicResource MarqueeTextInfo}" HorizontalAlignment="Center"/>
+                        </Canvas>
+                        <Canvas Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ClipToBounds="True" Name="InfoCanvas" Margin="0,0,0,0">
+                            <DockPanel VerticalAlignment="Stretch" ClipToBounds="True" HorizontalAlignment="Stretch" 
+                                Margin="0,0,0,0" x:Name="ReferenceInfo"
+                                Width="{Binding ActualWidth, ElementName=InfoCanvas}"
+                                Height="{Binding ActualHeight, ElementName=InfoCanvas}">
+                                <TextBox x:Name="PlotBox" TextWrapping="WrapWithOverflow"
+                                     Text="O, were that all! I think not on my father;
+And these great tears grace his remembrance more
+Than those I shed for him. What was he like?
+I have forgot him: my imagination
+Carries no favour in't but Bertram's.
+I am undone: there is no living, none,
+If Bertram be away. 'Twere all one
+That I should love a bright particular star
+And think to wed it, he is so above me:
+In his bright radiance and collateral light
+Must I be comforted, not in his sphere.
+The ambition in my love thus plagues itself:
+The hind that would be mated by the lion
+Must die for love. 'Twas pretty, though plague,
+To see him every hour; to sit and draw
+His arched brows, his hawking eye, his curls,
+In our heart's table; heart too capable
+Of every line and trick of his sweet favour:
+But now he's gone, and my idolatrous fancy
+Must sanctify his reliques. Who comes here?"
+                                     Style="{DynamicResource MarqueeTextInfo}"/>
+                            </DockPanel>
+                        </Canvas>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
