@@ -8,25 +8,6 @@ using System.Runtime.Remoting.Contexts;
 using Model;
 using VM;
 
-// Summary: Do not use the shortcuts ConfigureAwait(false) or SyncContext(null).
-// Reason: Shortcuts hide bad async/await usage, which may become a race condition**.
-// Notice: It CAN work without shortcuts, but it won't work per-se with*.
-// * SyncContext(null) can fail-to-fix IF running on UI thread.
-// * ConfigureAwait(false) can fail-to-fix IF running on UI thread.
-// * ConfigureAwait(false) can fail-to-fix because it does not propagate.
-// ** Any task MAY run on the UI thread, but may seldomly do this (e.g. only with high load).
-// Alternative: run bad methods on a seperate thread till they are properly fixed.
-
-// Lessons learned:
-// A task is executed in a context, which includes a thread.
-// We have no control over which thread it runs at *.
-// After the task is done, the code following the task is executed (called continuation).
-// This continuation can be in the task context, or in the pre-task context.
-// ConfigureAwait is used to TRY to set the continuation context (pre-task or task).
-// But because we do not know what runs where, this may either fix or cause problems.
-// * MainWindow -> Seperate Class decreases the likelihood of running on UI thread.
-// * MVVM seems to decrease the likelihood of running on UI thread to virtually 0.
-
 namespace UI
 {
     public partial class MainWindow : Window
@@ -51,22 +32,10 @@ namespace UI
 
             foreach (var executing in toExecute)
             {
-                var ST = Thread.CurrentThread.ManagedThreadId;
-                var SCS = SynchronizationContext.Current;
-                var EC = ExecutionContext.Capture();
                 RightText.Text = "Doing " + executing;
-                    
                 var o = "Did " + executing + " : " + await RightControl.Run(executing);
-                //SynchronizationContext.SetSynchronizationContext(SCS);
-                var RT = Thread.CurrentThread.ManagedThreadId;
-                if (RT != ST)
-                    Console.WriteLine();
+                //Dispatcher.Invoke(() => RightText.Text = o); // Solves crash 6
                 RightText.Text = o;
-                Dispatcher.Invoke(() => RightText.Text = o);
-                SCS.Post(delegate
-                {
-                    RightText.Text = o;
-                }, null);
                 await Task.Delay(100);
             }
             RightText.Text = "Done";
