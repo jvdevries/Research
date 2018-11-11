@@ -7,8 +7,8 @@ using System.Threading;
 namespace Model
 {
     /// <summary>
-    /// Provides several readers for reading setuperr.log in %WINDIR%.
-    /// It is surmised that this file always exists (YMMV).
+    /// Provides readers for reading setuperr.log in %WINDIR%.
+    /// It is surmised that this file always exists and is empty (YMMV).
     /// </summary>
     public class FileReader
     {

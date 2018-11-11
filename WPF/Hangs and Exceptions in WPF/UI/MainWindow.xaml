@@ -23,7 +23,7 @@
                     <Setter Property="Margin" Value="0,10,0,0"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBox x:Name="LeftText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Processing" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="LeftText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Simple Code-Behind" VerticalAlignment="Top" Width="auto"/>
             <Button Content="Click_Button" HorizontalAlignment="center" VerticalAlignment="Center" Click="LeftButtonClick"/>
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
@@ -50,7 +50,7 @@
                     <Setter Property="Margin" Value="0,10,0,0"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBox x:Name="RightText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Processing" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="RightText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Methoded Code-Behind" VerticalAlignment="Top" Width="auto"/>
             <Button Content="Click_Button" HorizontalAlignment="center" VerticalAlignment="Bottom" Click="RightButtonClick"/>
         </StackPanel>
     </Grid>

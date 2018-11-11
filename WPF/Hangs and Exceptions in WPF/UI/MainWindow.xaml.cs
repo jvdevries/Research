@@ -4,6 +4,7 @@ using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using Model;
 using VM;
 
@@ -36,71 +37,84 @@ namespace UI
             {
                 //1, // Hangs UI thread
                 //2, // Hangs UI thread
-                3,
-                4,
+                3, 
+                4, // Access exception
                 5,
                 //6, // Access exception
-                7,
-                8,
+                7, // Access exception
+                8, // Access exception
                 9,
-                //11, // Access exception
-                //12, // Access exception
-                13,
+                10,
+                11,
+                12
             };
 
             foreach (var executing in toExecute)
             {
+                var ST = Thread.CurrentThread.ManagedThreadId;
+                var SCS = SynchronizationContext.Current;
+                var EC = ExecutionContext.Capture();
                 RightText.Text = "Doing " + executing;
-                RightText.Text = "Did " + executing + " : " + await RightControl.Run(executing);
+                    
+                var o = "Did " + executing + " : " + await RightControl.Run(executing);
+                //SynchronizationContext.SetSynchronizationContext(SCS);
+                var RT = Thread.CurrentThread.ManagedThreadId;
+                if (RT != ST)
+                    Console.WriteLine();
+                RightText.Text = o;
+                Dispatcher.Invoke(() => RightText.Text = o);
+                SCS.Post(delegate
+                {
+                    RightText.Text = o;
+                }, null);
                 await Task.Delay(100);
             }
+            RightText.Text = "Done";
         }
 
         private async void LeftButtonClick(object sender, RoutedEventArgs e)
         {
-            var readSetupError = new FileReader(15);
-
             var toExecute = new HashSet<int>
             {
-                //1, // hangs UI thread
-                //2, // hangs UI thread
-                //3, // Access exception
-                4,
+                //1, // Hangs UI thread
+                //2, // Hangs UI thread
+                3, 
+                //4, // Access exception
                 5,
                 //6, // Access exception
-                7,
-                8,
-                9
+                //7, // Access exception
+                //8, // Access exception
+                9,
+                10,
+                11,
+                12
             };
 
             foreach (var executing in toExecute)
             {
-                var o = "Doing " + executing;
-                LeftText.Text = o;
+                var readSetupError = new FileReader(15);
 
-                // an unawaited async at a deeper level Hangs
+                var o = string.Empty;
+
                 if (executing == 1) o = await readSetupError.CallUnawaited();
-
-                // ConfigureAwait(false) does not propagate, so it does not fix the hang
                 if (executing == 2) o = await readSetupError.CallUnawaited().ConfigureAwait(false);
+                if (executing == 3) o = await readSetupError.CallAwaited();
+                if (executing == 4) o = await readSetupError.CallAwaited().ConfigureAwait(false);
 
-                // ConfigureAwait(false) can cause exception errors IF it runs on the UI thread
-                if (executing == 3) o = await readSetupError.CallAwaited().ConfigureAwait(false);
-                if (executing == 4) o = await readSetupError.CallAwaited();
-
-                // Removing the SetSynchronizationContext resolves the Hang
                 if (executing == 5) { var c = SynchronizationContext.Current; SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallUnawaited(); SynchronizationContext.SetSynchronizationContext(c); }
-
-                // Removing the SetSynchronizationContext causes Exception error IF it runs on the UI thread
                 if (executing == 6) { var c = SynchronizationContext.Current; SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallAwaited(); SynchronizationContext.SetSynchronizationContext(c); }
+                if (executing == 7) { SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallUnawaited(); }
+                if (executing == 8) { SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallAwaited(); }
 
-                if (executing == 7) o = await Task.Run(async () => await readSetupError.CallUnawaited());
-                if (executing == 8) o = await Task.Run(async () => await readSetupError.CallUnawaited().ConfigureAwait(false));
-                if (executing == 9) o = await Task.Run(async () => await readSetupError.CallAwaited().ConfigureAwait(false));
+                if (executing == 9) o = await Task.Run(async () => await readSetupError.CallUnawaited());
+                if (executing == 10) o = await Task.Run(async () => await readSetupError.CallUnawaited().ConfigureAwait(false));
+                if (executing == 11) o = await Task.Run(async () => await readSetupError.CallAwaited());
+                if (executing == 12) o = await Task.Run(async () => await readSetupError.CallAwaited().ConfigureAwait(false));
 
-                RightText.Text = o;
+                LeftText.Text = "Did " + o;
                 await Task.Delay(100);
             }
+            LeftText.Text = "Done";
         }
 
         public MainWindow()

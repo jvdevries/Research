@@ -23,7 +23,10 @@ namespace VM
                 6,
                 7,
                 8,
-                9
+                9,
+                10,
+                11,
+                12
             };
 
             foreach (var executing in execute)
@@ -31,26 +34,20 @@ namespace VM
                 var o = "Doing " + executing;
                 MiddleText = "Doing " + executing;
 
-                // an unawaited async at a deeper level Hangs
                 if (executing == 1) o = await readSetupError.CallUnawaited();
-
-                // ConfigureAwait(false) does not propagate, so it does not fix the hang
                 if (executing == 2) o = await readSetupError.CallUnawaited().ConfigureAwait(false);
+                if (executing == 3) o = await readSetupError.CallAwaited();
+                if (executing == 4) o = await readSetupError.CallAwaited().ConfigureAwait(false);
 
-                // ConfigureAwait(false) can cause exception errors IF it runs on the UI thread
-                if (executing == 3) o = await readSetupError.CallAwaited().ConfigureAwait(false);
-
-                if (executing == 4) o = await readSetupError.CallAwaited();
-
-                // Removing the SetSynchronizationContext resolves the Hang
                 if (executing == 5) { var c = SynchronizationContext.Current; SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallUnawaited(); SynchronizationContext.SetSynchronizationContext(c); }
-
-                // Removing the SetSynchronizationContext causes Exception error IF it runs on the UI thread
                 if (executing == 6) { var c = SynchronizationContext.Current; SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallAwaited(); SynchronizationContext.SetSynchronizationContext(c); }
+                if (executing == 7) { SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallUnawaited(); }
+                if (executing == 8) { SynchronizationContext.SetSynchronizationContext(null); o = await readSetupError.CallAwaited(); }
 
-                if (executing == 7) o = await Task.Run(async () => await readSetupError.CallUnawaited());
-                if (executing == 8) o = await Task.Run(async () => await readSetupError.CallUnawaited().ConfigureAwait(false));
-                if (executing == 9) o = await Task.Run(async () => await readSetupError.CallAwaited().ConfigureAwait(false));
+                if (executing == 9) o = await Task.Run(async () => await readSetupError.CallUnawaited());
+                if (executing == 10) o = await Task.Run(async () => await readSetupError.CallUnawaited().ConfigureAwait(false));
+                if (executing == 11) o = await Task.Run(async () => await readSetupError.CallAwaited());
+                if (executing == 12) o = await Task.Run(async () => await readSetupError.CallAwaited().ConfigureAwait(false));
 
                 MiddleText = "Did " + executing + " : " + o;
                 await Task.Delay(100);
@@ -60,14 +57,14 @@ namespace VM
         public string LeftText
         {
             get => _leftText;
-            set => SetProperty(ref _leftText, value);
+            set => SetProperty(ref _leftText, value, nameof(LeftText));
         }
         private string _leftText = "Left";
 
         public string MiddleText
         {
             get => _middleText;
-            set => SetProperty(ref _middleText, value);
+            set => SetProperty(ref _middleText, value, nameof(MiddleText));
         }
         private string _middleText = "Middle";
 
