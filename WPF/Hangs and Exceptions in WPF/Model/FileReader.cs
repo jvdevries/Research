@@ -21,7 +21,7 @@ namespace Model
             _delayTime = delayValue;
         }
 
-        public async Task<string> callUnawaited()
+        public async Task<string> CallUnawaited()
             => new Func<Task<string>>(async () =>
             {
                 using (var stream = File.OpenRead(SetupErrorFullFileName))
@@ -34,7 +34,7 @@ namespace Model
                 }
             }).Invoke().Result;
 
-        public async Task<string> callAwaited()
+        public async Task<string> CallAwaited()
         {
             using (var stream = File.OpenRead(SetupErrorFullFileName))
             using (var reader = new StreamReader(stream))

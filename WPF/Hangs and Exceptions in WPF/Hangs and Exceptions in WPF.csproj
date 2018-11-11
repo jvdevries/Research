@@ -85,8 +85,7 @@
     </Compile>
     <Compile Include="UI\RightControl.cs" />
     <Compile Include="Model\FileReader.cs" />
-    <Compile Include="UI\MiddleControl.cs" />
-    <Compile Include="UI\ViewModelBase.cs" />
+    <Compile Include="UI\MiddleControl - ViewModelBase.cs" />
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
