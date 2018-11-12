@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="UWPAutoScroller.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPAutoScroller"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local:AutoScrollerViewModel x:Key="AutoScrollerViewModel"/>
+    </Page.Resources>
+    <Grid Background="Gray" HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+        <local:AutoScroller DataContext="{StaticResource AutoScrollerViewModel}" Grid.Column="0"/>
+    </Grid>
+</Page>
