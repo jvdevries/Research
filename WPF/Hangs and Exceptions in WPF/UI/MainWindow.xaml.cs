@@ -33,8 +33,9 @@ namespace UI
             foreach (var executing in toExecute)
             {
                 var o = string.Empty;
-
+                var ThreadB = System.Threading.Thread.CurrentThread.ManagedThreadId;
                 o = await RightControl.Run(executing);
+                var ThreadA = System.Threading.Thread.CurrentThread.ManagedThreadId;
                 //Dispatcher.Invoke(() => RightText.Text = o); // Use instead of above to solve crash 6
                 RightText.Text = "Did " + o;
                 await Task.Delay(100);
@@ -48,10 +49,10 @@ namespace UI
             {
                 //1, // Hangs UI thread
                 //2, // Hangs UI thread
-                3, 
-                //4, // Access exception
-                5,
-                //6, // Access exception
+                //3, 
+                4, // Access exception
+                //5,
+                6, // Access exception
                 //7, // Access exception
                 //8, // Access exception
                 9,

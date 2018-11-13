@@ -39,9 +39,12 @@ namespace Model
             using (var stream = File.OpenRead(SetupErrorFullFileName))
             using (var reader = new StreamReader(stream))
             {
+                var ThreadB = System.Threading.Thread.CurrentThread.ManagedThreadId;
+                var r = string.Empty;
                 var t = reader.ReadToEndAsync();
                 await t;
-                var r = t.Result;
+                r = t.Result;
+                var ThreadA = System.Threading.Thread.CurrentThread.ManagedThreadId;
                 return r;
             }
         }
