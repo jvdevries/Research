@@ -32,10 +32,11 @@ namespace UI
 
             foreach (var executing in toExecute)
             {
-                RightText.Text = "Doing " + executing;
-                var o = "Did " + executing + " : " + await RightControl.Run(executing);
-                //Dispatcher.Invoke(() => RightText.Text = o); // Solves crash 6
-                RightText.Text = o;
+                var o = string.Empty;
+
+                o = await RightControl.Run(executing);
+                //Dispatcher.Invoke(() => RightText.Text = o); // Use instead of above to solve crash 6
+                RightText.Text = "Did " + o;
                 await Task.Delay(100);
             }
             RightText.Text = "Done";
@@ -96,7 +97,7 @@ namespace UI
         readonly DispatcherTimer _timer = new DispatcherTimer();
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _timer.Interval = TimeSpan.FromMilliseconds(10);
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
             _timer.Tick += TimerTick;
             _timer.Start();
         }
@@ -104,8 +105,9 @@ namespace UI
         private int _ticks;
         private void TimerTick(object sender, EventArgs e)
         {
-            _ticks++;
-            txtTicks.Text = _ticks.ToString();
+            Slider.Value = ++_ticks;
+            if (_ticks == 10)
+                _ticks = 0;
         }
     }
 }

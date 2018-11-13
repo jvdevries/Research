@@ -8,9 +8,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="250" Width="400">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
@@ -27,9 +31,6 @@
             <Button Content="Click_Button" HorizontalAlignment="center" VerticalAlignment="Center" Click="LeftButtonClick"/>
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="txtTicks">0</TextBlock>
-        </StackPanel>
-        <StackPanel Grid.Column="2" VerticalAlignment="Center">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Margin" Value="0,10,0,0"/>
@@ -41,7 +42,7 @@
             <TextBox Text="{Binding MiddleText}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <Button Content="Bound_Button" HorizontalAlignment="Center" VerticalAlignment="Bottom" Command="{Binding MiddleButtonClick}"/>
         </StackPanel>
-        <StackPanel Grid.Column="3" VerticalAlignment="Center">
+        <StackPanel Grid.Column="2" VerticalAlignment="Center">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="Margin" Value="0,10,0,0"/>
@@ -53,5 +54,6 @@
             <TextBox x:Name="RightText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Methoded Code-Behind" VerticalAlignment="Top" Width="auto"/>
             <Button Content="Click_Button" HorizontalAlignment="center" VerticalAlignment="Bottom" Click="RightButtonClick"/>
         </StackPanel>
+        <Slider Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" x:Name="Slider" IsHitTestVisible="False" IsTabStop="False" IsEnabled="False" Minimum="0" Maximum="10"/>
     </Grid>
 </Window>
