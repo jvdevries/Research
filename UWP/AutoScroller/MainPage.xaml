@@ -13,8 +13,10 @@
     </Page.Resources>
     <Grid Background="Gray" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:AutoScroller DataContext="{StaticResource AutoScrollerViewModel}" Grid.Column="0"/>
+        <local:AutoScroller DataContext="{StaticResource AutoScrollerViewModel}" Grid.Column="1"/>
     </Grid>
 </Page>

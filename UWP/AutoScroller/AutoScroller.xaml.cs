@@ -57,8 +57,15 @@ namespace UWPAutoScroller
         {
             this.InitializeComponent();
             _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
+            // Needed for Translation.X or it'll crash...
+            ElementCompositionPreview.SetIsTranslationEnabled(AutoTextBlock, true);
 
-            DataContextChanged += (s, e) =>
+            Window.Current.SizeChanged += (o, e) =>
+            {
+                Animate();
+            };
+
+            DataContextChanged += (o, e) =>
             {
                 ViewModel = DataContext as IAutoScrollerViewModel;
             };
@@ -66,18 +73,20 @@ namespace UWPAutoScroller
 
         private void HorizontalAutoScrollerLoaded(object sender, RoutedEventArgs e)
         {
-            // Needed for Translation.X or it'll crash...
-            ElementCompositionPreview.SetIsTranslationEnabled(AutoTextBlock, true);
+            Animate();
+        }
 
+        private void Animate()
+        {
             // Get the width of the visible TextBox
             var renderWidth = PositionAndSizeDeterminer.RenderSize.Width;
 
-            // Get the needed width for the TextBox
+            // Get the invisible width for the TextBox
             var desiredWidth = GetAutoScrollerNecessaryWidth();
 
             // Calculate the scroll distance
             var characters = AutoTextBlock.Text.Length;
-            var scrollDistance = -1f * (desiredWidth - (float) renderWidth);
+            var scrollDistance = -1f * (desiredWidth - (float)renderWidth);
 
             // Do not scroll if not needed
             if (scrollDistance >= 0) return;
