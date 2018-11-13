@@ -32,14 +32,15 @@ DWORD WINAPI Thread2(LPVOID lpParam)
 	    __asm mov ebx, [X];
     	__asm mov [dummyY], eax
     	__asm mov [dummyX], ebx
+    	__asm lfence
     	
-    	if (dummyX == 1)
-    		return 0;
-    	if (dummyY == 2)
+    	if (dummyY == 2 && dummyX != 1)
     	{
 			cout << "Found occurence" << endl;
 			exit(1);
     	}
+    	if (dummyX == 1)
+    		return 0;
 	}
 	
 	return 0;
