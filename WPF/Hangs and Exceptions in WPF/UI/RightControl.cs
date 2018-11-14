@@ -29,6 +29,8 @@ namespace UI
             if (executing == 12) o = await Task.Run(async () => await readSetupError.CallAwaited().ConfigureAwait(false));
             var ThreadA = System.Threading.Thread.CurrentThread.ManagedThreadId;
 
+            //await Task.Delay(15); // Solves path 6 crash
+
             return o;
         }
     }
