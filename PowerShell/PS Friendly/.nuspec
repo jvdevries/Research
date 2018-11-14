@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FriendlyFramework</id>
+    <version>1.0.0</version>
+    <title>A PowerShell Framework for development.</title>
+    <authors>.</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Friendly provides:
+      + A templated work method centralizing around Work-Units for Friendly development.
+      + Safely executed Work-Units with their own Error functions for Friendly crashes.
+      + Configurable automated tracing of Work-Unit execution for Friendly debugging.
+      + Strict parameter checking for reducing UnFriendly runtime conversion problems.
+    </description>
+  </metadata>
+  <files>
+    <file src="Friendly\**" target="content\Packages.Sources\Friendly\" />
+  </files>
+</package>

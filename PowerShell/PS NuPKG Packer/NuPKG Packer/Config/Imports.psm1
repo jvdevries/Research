@@ -1,0 +1,1 @@
+﻿Import-Module (Join-Path $PSScriptRoot "\..\..\Friendly\Friendly.psm1" -Resolve) -Force

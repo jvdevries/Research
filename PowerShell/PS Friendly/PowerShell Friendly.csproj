@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC9C626F-3C8F-407C-B95C-3E6E2FA7A3DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NuGetMaker</RootNamespace>
+    <AssemblyName>NuGet Maker</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".nuspec">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Friendly\Docs\How to use\MakeMain.psm1" />
+    <None Include="Friendly\Docs\How to use\Friendly.psm1" />
+    <None Include="Friendly\Docs\How to use\Debug Messaging.psm1" />
+    <None Include="Friendly\Docs\How to use\Work Units.psm1" />
+    <None Include="Friendly\Docs\Friendly Features.psm1" />
+    <None Include="Friendly\Docs\Recommendations\No Curly Brackets Newline.ps1" />
+    <None Include="Friendly\Docs\Recommendations\ParamCheck not Param.ps1" />
+    <None Include="Friendly\Docs\Recommendations\%24x Args.ps1" />
+    <None Include="Friendly\FrExe\Config\Store.psm1" />
+    <None Include="Friendly\FrExe\Config\DeveloperSettings.psm1" />
+    <None Include="Friendly\FrExe\Config\UserSettings.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Consumers\Host.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Consumers\Interface.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Consumers\Store.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Creators\Cr.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Creators\TracerWriter.psm1" />
+    <None Include="Friendly\FrExe\Code\FrDM\Distributor\Distributor.psm1" />
+    <None Include="Friendly\FrExe\Code\FrP\FrP.psm1" />
+    <None Include="Friendly\FrExe\Code\FrW\FrW Check Factory.psm1" />
+    <None Include="Friendly\FrExe\Code\FrW\FrW Error Factory.psm1" />
+    <None Include="Friendly\FrExe\Code\FrW\FrW.psm1" />
+    <None Include="Friendly\Docs\Recommendations\%24x Functions.ps1" />
+    <None Include="Friendly\SampleRun.ps1" />
+    <None Include="Friendly\FrUtil\Code\IO\GetDirectoriesWithFuncStringBool.psm1" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Friendly\Friendly.psm1" />
+    <None Include="Friendly\FrUtil\Code\Build\MakeMain.psm1" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

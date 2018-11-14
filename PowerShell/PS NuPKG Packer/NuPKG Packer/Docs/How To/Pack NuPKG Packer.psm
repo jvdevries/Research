@@ -1,0 +1,4 @@
+﻿1) Make sure Imports.psm is set to the right path: Import-Module (Join-Path $PSScriptRoot "\..\..\Packages.Sources\Friendly\Friendly.psm1" -Resolve) -Force
+2) Run import-module .\NuPKGPacker.psm1 -force
+3) REvert back Imports.psm to the original path: Import-Module (Join-Path $PSScriptRoot "\..\..\Friendly\Friendly.psm1" -Resolve) -Force
+4) Run CreateNuPKG and follow directions.
