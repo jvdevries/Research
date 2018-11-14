@@ -19,11 +19,11 @@ namespace UI
                 //1, // Hangs UI thread
                 //2, // Hangs UI thread
                 3, 
-                4, // Access exception
+                4, // Access exception (not here)
                 5,
                 //6, // Access exception
-                7, // Access exception
-                8, // Access exception
+                7, // Access exception (not here)
+                8, // Access exception (not here)
                 9,
                 10,
                 11,
@@ -49,10 +49,10 @@ namespace UI
             {
                 //1, // Hangs UI thread
                 //2, // Hangs UI thread
-                //3, 
-                4, // Access exception
-                //5,
-                6, // Access exception
+                3, 
+                //4, // Access exception
+                5,
+                //6, // Access exception
                 //7, // Access exception
                 //8, // Access exception
                 9,
