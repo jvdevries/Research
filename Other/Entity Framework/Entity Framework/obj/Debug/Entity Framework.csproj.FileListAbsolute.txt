@@ -1,0 +1,18 @@
+S:\Personal\Development\Research\Entity Framework\Entity Framework\obj\Debug\Entity Framework.csprojAssemblyReference.cache
+S:\Personal\Development\Research\Entity Framework\Entity Framework\obj\Debug\Entity Framework.csproj.CoreCompileInputs.cache
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\Entity Framework.exe.config
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\Entity Framework.exe
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\Entity Framework.pdb
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\EntityFramework.dll
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\EntityFramework.SqlServer.dll
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\System.Data.SQLite.dll
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\System.Data.SQLite.EF6.dll
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\System.Data.SQLite.Linq.dll
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\EntityFramework.xml
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\EntityFramework.SqlServer.xml
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\System.Data.SQLite.xml
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\System.Data.SQLite.dll.config
+S:\Personal\Development\Research\Entity Framework\Entity Framework\obj\Debug\Entity Framework.csproj.CopyComplete
+S:\Personal\Development\Research\Entity Framework\Entity Framework\obj\Debug\Entity Framework.exe
+S:\Personal\Development\Research\Entity Framework\Entity Framework\obj\Debug\Entity Framework.pdb
+S:\Personal\Development\Research\Entity Framework\Entity Framework\bin\Debug\Resources\DB.sqlite
